@@ -129,14 +129,14 @@ header {
 }
 #main-content {
   float: left;
-  width: 400px;
+  width: 490px;
 }
 #main-content p {
   margin-bottom: 20px;
 }
 .sidebar {
   float: left;
-  width: 100px;
+  width: 10px;
 }
 .sidebar .widget {
 /*
