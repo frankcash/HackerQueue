@@ -55,6 +55,7 @@ app.get('/ycomb', function(req,res) { // pushes the info to a sub url
   });
 })
 
+
 // end ycomb
 
 metadataArray = [ ]; // clears the array
@@ -109,7 +110,7 @@ function RProg(callback){
 
         var metadata = {
           title:title,
-          uri:url
+          url:url
         };
         
         metadataArray.push(metadata);
