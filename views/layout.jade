@@ -10,11 +10,12 @@ body
       h1 Techie.JS
 
     #container
-      form(name="input", action="html_form_action.asp", method="get")
-        | Filter: 
-        input(type="text")
-        input(type="submit", value="Submit")
-      <br />   
+      <h3>Filter:<h3>
+      <input type="text" id="filterText">
+      <button onclick="doFilter()">Submit</button>
+      p(style='white-space:pre;')
+        |<br />
+
       #main-content
 
         block content
