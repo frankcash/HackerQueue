@@ -25,23 +25,23 @@ function YComb(callback){
         var metadataArray = [ ];
   			var $ = cheerio.load(html);
   			$('span.comhead').each(function(i, element){
-    			var a=$(this).prev(); //selects previous data
-    			var rank=a.parent().parent().text(); //gets ranks by parsing text two elements higher
-    			var title=a.text(); // parses link title
-    			var url=a.attr('href'); // parses href attribute from "a" element
-    			var subtext = a.parent().parent().next().children('.subtext').children(); // gets the subtext from the children
-    			var points = $(subtext).eq(0).text();
-    			var username = $(subtext).eq(1).text();
-    			var comments = $(subtext).eq(2).text();
+  			var a=$(this).prev(); //selects previous data
+  			var rank=a.parent().parent().text(); //gets ranks by parsing text two elements higher
+  			var title=a.text(); // parses link title
+  			var url=a.attr('href'); // parses href attribute from "a" element
+  			var subtext = a.parent().parent().next().children('.subtext').children(); // gets the subtext from the children
+  			var points = $(subtext).eq(0).text();
+  			var username = $(subtext).eq(1).text();
+  			var comments = $(subtext).eq(2).text();
 
-    			var metadata = { // creates a new object
-    				rank: parseInt(rank),
-    				title:title,
-    				url:url,
-    				points: parseInt(points),
-    				username: username,
-    				comments: parseInt(comments)
-  			   };
+  			var metadata = { // creates a new object
+  				rank: parseInt(rank),
+  				title:title,
+  				url:url,
+  				points: parseInt(points),
+  				username: username,
+  				comments: parseInt(comments)
+  			};
   			metadataArray.push(metadata); // pushes the object
   			});
         callback(metadataArray);
@@ -55,11 +55,44 @@ app.get('/ycomb', function(req,res) { // pushes the info to a sub url
   });
 })
 
-// end Ycomb stuff
+// end ycomb
 
 metadataArray = [ ]; // clears the array
 
-// reddit stuff here
+// start Lobster stuff
+
+function Lobster(callback){
+  request('https://lobste.rs', function(error, response, html){
+      if(!error && response.statusCode === 200){
+        var metadataArray = [ ];
+
+        var $ = cheerio.load(html);
+        $('span.link').each(function(i, element){
+        var a=$(this); //selects previous data
+        var url=a.children().attr('href'); // parses href attribute from "a" element
+        var title=a.text(); // parses link title
+        var metadata = { // creates a new object
+          title:title,
+          url:url
+        };
+        metadataArray.push(metadata); // pushes the object
+        });
+        callback(metadataArray);
+      }
+  });
+}
+
+app.get('/lobster', function(req,res) { // pushes the info to a sub url
+  Lobster(function(data){ // call back to the function
+    res.send(data)
+  });
+})
+
+// end Lobster stuff
+
+metadataArray = [ ]; // clears the array
+
+// rprog stuff here
 
 function RProg(callback){
   request('http://www.reddit.com/r/programming', function(error, response, html){
@@ -95,7 +128,7 @@ app.get('/rp', function(req,res) { // pushes the info to a sub url
   });
 })
 
-//end reddit stuff
+//end rprog stuff
 
 
 metadataArray = [ ]; // clears the array
