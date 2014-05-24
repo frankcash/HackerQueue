@@ -1,0 +1,17 @@
+doctype html
+html
+  head
+    title #{title} - Hacker News API
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src="http://code.jquery.com/jquery-1.11.0.min.js")
+body
+    script(type='text/javascript' src='helper.js')
+    header
+      h1 Hacker News
+    #container
+      #main-content
+        block content
+     #sidebar
+        block sidebar
+    footer
+      p Check out my GitHub https://github.com/frankcash
