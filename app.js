@@ -17,6 +17,7 @@ function compile(str, path) {
       .use(nib());
 }
 
+// Start Ycomb stuff
 
 function YComb(callback){
   request('https://news.ycombinator.com', function(error, response, html){
@@ -24,23 +25,23 @@ function YComb(callback){
         var metadataArray = [ ];
   			var $ = cheerio.load(html);
   			$('span.comhead').each(function(i, element){
-  			var a=$(this).prev(); //selects previous data
-  			var rank=a.parent().parent().text(); //gets ranks by parsing text two elements higher
-  			var title=a.text(); // parses link title
-  			var url=a.attr('href'); // parses href attribute from "a" element
-  			var subtext = a.parent().parent().next().children('.subtext').children(); // gets the subtext from the children
-  			var points = $(subtext).eq(0).text();
-  			var username = $(subtext).eq(1).text();
-  			var comments = $(subtext).eq(2).text();
+    			var a=$(this).prev(); //selects previous data
+    			var rank=a.parent().parent().text(); //gets ranks by parsing text two elements higher
+    			var title=a.text(); // parses link title
+    			var url=a.attr('href'); // parses href attribute from "a" element
+    			var subtext = a.parent().parent().next().children('.subtext').children(); // gets the subtext from the children
+    			var points = $(subtext).eq(0).text();
+    			var username = $(subtext).eq(1).text();
+    			var comments = $(subtext).eq(2).text();
 
-  			var metadata = { // creates a new object
-  				rank: parseInt(rank),
-  				title:title,
-  				url:url,
-  				points: parseInt(points),
-  				username: username,
-  				comments: parseInt(comments)
-  			};
+    			var metadata = { // creates a new object
+    				rank: parseInt(rank),
+    				title:title,
+    				url:url,
+    				points: parseInt(points),
+    				username: username,
+    				comments: parseInt(comments)
+  			   };
   			metadataArray.push(metadata); // pushes the object
   			});
         callback(metadataArray);
@@ -53,6 +54,49 @@ app.get('/ycomb', function(req,res) { // pushes the info to a sub url
     res.send(data)
   });
 })
+
+// end Ycomb stuff
+
+metadataArray = [ ]; // clears the array
+
+// reddit stuff here
+
+function RProg(callback){
+  request('http://www.reddit.com/r/programming', function(error, response, html){
+    if(!error && response.statusCode == 200){
+      var metadataArray = [ ];
+      var $ = cheerio.load(html);
+      
+      $('a.title').each(function(i, element){
+        
+        var a=$(this);
+
+        var title=a.text();
+        var url=a.attr('href');
+
+        var metadata = {
+          title:title,
+          uri:url
+        };
+        
+        metadataArray.push(metadata);
+      });
+      callback(metadataArray);
+    }
+
+  });
+
+}
+
+
+app.get('/rp', function(req,res) { // pushes the info to a sub url
+  RProg(function(data){ // call back to the function
+    res.send(data)
+  });
+})
+
+//end reddit stuff
+
 
 metadataArray = [ ]; // clears the array
 
