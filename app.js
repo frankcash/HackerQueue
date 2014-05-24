@@ -134,6 +134,7 @@ app.get('/rp', function(req,res) { // pushes the info to a sub url
 
 metadataArray = [ ]; // clears the array
 
+
 app.set('views', __dirname + '/views') // sets dir
 
 app.set('view engine', 'jade') // tells express to use jade
