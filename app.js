@@ -18,7 +18,7 @@ function compile(str, path) {
 }
 
 
-function callbackForJSON(callback){
+function YComb(callback){
   request('https://news.ycombinator.com', function(error, response, html){
   		if(!error && response.statusCode === 200){
         var metadataArray = [ ];
@@ -48,8 +48,8 @@ function callbackForJSON(callback){
   });
 }
 
-app.get('/scrape', function(req,res) { // pushes the info to a sub url
-  callbackForJSON(function(data){ // call back to the function
+app.get('/ycomb', function(req,res) { // pushes the info to a sub url
+  YComb(function(data){ // call back to the function
     res.send(data)
   });
 })

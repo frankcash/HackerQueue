@@ -1,4 +1,4 @@
-$.getJSON('/scrape', function(data){ // gets the JSON info
+$.getJSON('/ycomb', function(data){ // gets the JSON info
   // console.log(data);
   for(var i = 0; i<30;i++){
     $("<p><b>" + data[i].rank + ".</b> " + "<a href=" + data[i].url + ">" + data[i].title + "</a></p>").appendTo("#helper")
