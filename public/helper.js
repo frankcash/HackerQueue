@@ -22,9 +22,7 @@ $.getJSON('/lobster', function(data){
 
 
 $( document ).ready(function() {
-  // console.log( "ready!" );
-  // $("b").mouseover(function(){
-  //  $("<p>" + data[i].rank + "</p>")
-  // });
-
+  $('#refresh').click(function(){
+    location.reload();
+  });
 });
