@@ -8,8 +8,15 @@ body
     script(type='text/javascript' src='helper.js')
     header
       h1 Techie.JS
+
     #container
+      form(name="input", action="html_form_action.asp", method="get")
+        | Filter: 
+        input(type="text")
+        input(type="submit", value="Submit")
+      <br />   
       #main-content
+
         block content
      #sidebar
         block sidebar

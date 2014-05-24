@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-$.getJSON('/ycomb', function(data){ // gets the JSON info
-  // console.log(data);
-  for(var i = 0; i<30;i++){
-    $("<p><b>" + data[i].rank + ".</b> " + "<a href=" + data[i].url + ">" + data[i].title + "</a></p>").appendTo("#helper")
-  }
-});
-
-=======
 
 $.getJSON('/ycomb', function(data){ // gets the JSON info
   for(var i = 0; i<30;i++){
@@ -22,7 +13,6 @@ $.getJSON('/rp', function(data){
 	}
 });
 
->>>>>>> 2259898b3b3cb7d35331d82229df823b44487d8c
 $.getJSON('/lobster', function(data){
 	for (var i = 0; i<25; i++) {
 		console.log("lobster");

@@ -49,27 +49,17 @@ function YComb(callback){
   });
 }
 
-<<<<<<< HEAD
-
-app.get('/ycomb', function(req, res) {
-  Ycomb(function(data){
-=======
 app.get('/ycomb', function(req,res) { // pushes the info to a sub url
   YComb(function(data){ // call back to the function
->>>>>>> 2259898b3b3cb7d35331d82229df823b44487d8c
     res.send(data)
   });
 })
 
-<<<<<<< HEAD
-metadataArray = [ ]; // clears the array
-=======
 // end ycomb
 
 metadataArray = [ ]; // clears the array
 
 // start Lobster stuff
->>>>>>> 2259898b3b3cb7d35331d82229df823b44487d8c
 
 function Lobster(callback){
   request('https://lobste.rs', function(error, response, html){
