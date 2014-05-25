@@ -41,46 +41,81 @@ $( document ).ready(function() {
   });
 
 	$("#searchterm").keyup( debounce (function(e){
-		var q = $("#searchterm").val();
-		$('li').remove();
-		$("#res").remove();
-		$("#helper").append("<b id=res> Results for " + q + "</b>");
+    var q = $("#searchterm").val();
+    $('li').remove();
+    $("#res").remove();
+    $("#helper").append("<b id=res> Results for " + q + "</b>");
 
-		$.getJSON("/lobster", function(data){
+    if($('#top').is(':checked')) {
 
-			for(var i = 0; i<15; i++){
-				var re = new RegExp(q, "i");
-				var treble = re.test(data[i].title);
-				if(treble == true){
-					$('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a></p></li>').appendTo('#helper');
-					console.log("lob");
-				}
-			}
-		})
+  		$.getJSON("/lobster", function(data){
 
-		$.getJSON("/rp", function(data){
-			for(var i = 0; i<15; i++){
-				var re = new RegExp(q, "i");
-				var treble = re.test(data[i].title);
-				if(treble == true){
-					$('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a></p></li>').appendTo('#helper');
-					console.log("rp");
-				}
-			}
-		})
+  			for(var i = 0; i<15; i++){
+  				var re = new RegExp(q, "i");
+  				var treble = re.test(data[i].title);
+  				if(treble == true){
+  					$('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a></p></li>').appendTo('#helper');
 
-		$.getJSON("/ycomb", function(data){
-			for(var i = 0; i<15; i++){
-				var re = new RegExp(q, "i");
-				var treble = re.test(data[i].title);
-				if(treble == true){
-					$('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a></p></li>').appendTo('#helper');
-					console.log("yc");
-				}
-			}
-		})
+  				}
+  			}
+  		})
 
-	},250));
+  		$.getJSON("/rp", function(data){
+  			for(var i = 0; i<15; i++){
+  				var re = new RegExp(q, "i");
+  				var treble = re.test(data[i].title);
+  				if(treble == true){
+  					$('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a></p></li>').appendTo('#helper');
+
+  				}
+  			}
+  		})
+
+  		$.getJSON("/ycomb", function(data){
+  			for(var i = 0; i<15; i++){
+  				var re = new RegExp(q, "i");
+  				var treble = re.test(data[i].title);
+  				if(treble == true){
+  					$('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a></p></li>').appendTo('#helper');
+
+  				}
+  			}
+  		})
+  }else{
+    $.getJSON('/ynew', function(data){
+      for(var i = 0; i<15; i++){
+        var re = new RegExp(q, "i");
+        var treble = re.test(data[i].title);
+        if(treble == true){
+          $('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a></p></li>').appendTo('#helper');
+          
+        }
+      }
+    });
+
+    $.getJSON('/rnew', function(data){
+      for(var i = 0; i<15; i++){
+        var re = new RegExp(q, "i");
+        var treble = re.test(data[i].title);
+        if(treble == true){
+          $('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a></p></li>').appendTo('#helper');
+
+        }
+      }
+    });
+
+    $.getJSON('/lnew', function(data){
+      for(var i = 0; i<15; i++){
+        var re = new RegExp(q, "i");
+        var treble = re.test(data[i].title);
+        if(treble == true){
+          $('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a></p></li>').appendTo('#helper');
+
+        }
+      }
+    });
+  }
+	},500));
 
   $("#new").click(function(){
     $("li").remove();
@@ -110,6 +145,7 @@ $( document ).ready(function() {
   })
 
   $("#top").click(function(){
+
     $("li").remove();
     $("#res").remove();
     $.getJSON('/ycomb', function(data){
