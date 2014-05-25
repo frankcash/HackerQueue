@@ -24,15 +24,23 @@ function YComb(callback){
   		if(!error && response.statusCode === 200){
         var metadataArray = [ ];
   			var $ = cheerio.load(html);
-  			$('span.title').each(function(i, element){
-  			var a=$(this); //selects previous data
+  			$('span.comhead').each(function(i, element){
+  			var a=$(this).prev(); //selects previous data
+  			var rank=a.parent().parent().text(); //gets ranks by parsing text two elements higher
   			var title=a.text(); // parses link title
-  			var url=a.children.attr('href'); // parses href attribute from "a" element
-  		
+  			var url=a.attr('href'); // parses href attribute from "a" element
+  			var subtext = a.parent().parent().next().children('.subtext').children(); // gets the subtext from the children
+  			var points = $(subtext).eq(0).text();
+  			var username = $(subtext).eq(1).text();
+  			var comments = $(subtext).eq(2).text();
+
   			var metadata = { // creates a new object
   				rank: parseInt(rank),
   				title:title,
-  				url:url
+  				url:url,
+  				points: parseInt(points),
+  				username: username,
+  				comments: parseInt(comments)
   			};
   			metadataArray.push(metadata); // pushes the object
   			});
