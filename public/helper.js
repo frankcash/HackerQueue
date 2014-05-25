@@ -1,17 +1,17 @@
 $.getJSON('/ycomb', function(data){ 
-  for(var i = 0; i<10;i++){
+  for(var i = 0; i<15;i++){
     $('<li id="post"><p><a href="' + data[i].url + '">' + data[i].title + '</a></p></li>').appendTo('#helper');
   }
 });
 
 $.getJSON('/rp', function(data){
-	for(var i=0; i<10; i++){
+	for(var i=0; i<15; i++){
 		$('<li id="post"><p><a href="' + data[i].url + '">' + data[i].title + '</a></p></li>').appendTo('#helper');
 	}
 });
 
 $.getJSON('/lobster', function(data){
-	for (var i = 0; i<10; i++) {
+	for (var i = 0; i<15; i++) {
 		$('<li id="post"><p><a href="' + data[i].url + '">' + data[i].title + '</a></p></li>').appendTo('#helper');
   }
 });	
@@ -32,8 +32,8 @@ $( document ).ready(function() {
 
 		$.getJSON("/lobster", function(data){ 
 			
-			for(var i = 0; i<10; i++){
-				var re = new RegExp(q, "g");
+			for(var i = 0; i<15; i++){
+				var re = new RegExp(q, "i");
 				var treble = re.test(data[i].title);
 				if(treble == true){
 					$('<li id="post"><p><a href="' + data[i].url + '">' + data[i].title + '</a></p></li>').appendTo('#helper');
@@ -43,9 +43,8 @@ $( document ).ready(function() {
 		})
 
 		$.getJSON("/rp", function(data){
-			// $('li').remove();
-			for(var i = 0; i<10; i++){
-				var re = new RegExp(q, "g");
+			for(var i = 0; i<15; i++){
+				var re = new RegExp(q, "i");
 				var treble = re.test(data[i].title);
 				if(treble == true){
 					$('<li id="post"><p><a href="' + data[i].url + '">' + data[i].title + '</a></p></li>').appendTo('#helper');
@@ -55,9 +54,8 @@ $( document ).ready(function() {
 		})
 
 		$.getJSON("/ycomb", function(data){
-			// $('li').remove();
-			for(var i = 0; i<10; i++){
-				var re = new RegExp(q, "g");
+			for(var i = 0; i<15; i++){
+				var re = new RegExp(q, "i");
 				var treble = re.test(data[i].title);
 				if(treble == true){
 					$('<li id="post"><p><a href="' + data[i].url + '">' + data[i].title + '</a></p></li>').appendTo('#helper');
