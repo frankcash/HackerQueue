@@ -21,14 +21,26 @@ $.getJSON('/lobster', function(data){
   }
 });	
 
-
 $( document ).ready(function() {
+
+	function debounce(fn, delay) {
+	  var timer = null;
+	  return function () {
+	    var context = this, args = arguments;
+	    clearTimeout(timer);
+	    timer = setTimeout(function () {
+	      fn.apply(context, args);
+	    }, delay);
+	  };
+	}
+
+  $('#refresh').css( 'cursor', 'pointer' );
+
   $('#refresh').click(function(){
     location.reload();
   });
 
-
-	$("#searchterm").keyup(function(e){
+	$("#searchterm").keyup( debounce (function(e){
 		var q = $("#searchterm").val();
 		$('li').remove();
 		$("#res").remove();
@@ -68,11 +80,8 @@ $( document ).ready(function() {
 			}
 		})
 
-	})
+	},250));
 
 
 });
 
-$( document ).ready(function() {
-  $('#refresh').css( 'cursor', 'pointer' );
-  });
