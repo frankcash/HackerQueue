@@ -117,6 +117,9 @@ header {
 #main-content p {
   margin-bottom: 20px;
 }
+#main-content #newsType {
+  text-align: center;
+}
 .sidebar {
   float: left;
   width: 10px;
