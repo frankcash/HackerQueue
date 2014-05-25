@@ -1,4 +1,4 @@
-$.getJSON('/ycomb', function(data){ 
+$.getJSON('/ycomb', function(data){
   for(var i = 0; i<15;i++){
     $('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a></p></li>').appendTo('#helper');
 
@@ -19,7 +19,7 @@ $.getJSON('/lobster', function(data){
 		$('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a></p></li>').appendTo('#helper');
 
   }
-});	
+});
 
 $( document ).ready(function() {
 
@@ -46,8 +46,8 @@ $( document ).ready(function() {
 		$("#res").remove();
 		$("#helper").append("<b id=res> Results for " + q + "</b>");
 
-		$.getJSON("/lobster", function(data){ 
-			
+		$.getJSON("/lobster", function(data){
+
 			for(var i = 0; i<15; i++){
 				var re = new RegExp(q, "i");
 				var treble = re.test(data[i].title);
@@ -82,6 +82,58 @@ $( document ).ready(function() {
 
 	},250));
 
+  $("#new").click(function(){
+    $("li").remove();
+    $("#res").remove();
+    $.getJSON('/ynew', function(data){
+      for(var i = 0; i<15;i++){
+        $('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a></p></li>').appendTo('#helper');
+
+      }
+    });
+
+    $.getJSON('/rnew', function(data){
+
+      for(var i=0; i<15; i++){
+        $('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a></p></li>').appendTo('#helper');
+
+      }
+    });
+
+    $.getJSON('/lnew', function(data){
+
+      for (var i = 0; i<15; i++) {
+        $('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a></p></li>').appendTo('#helper');
+
+      }
+    });
+  })
+
+  $("#top").click(function(){
+    $("li").remove();
+    $("#res").remove();
+    $.getJSON('/ycomb', function(data){
+      for(var i = 0; i<15;i++){
+        $('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a></p></li>').appendTo('#helper');
+
+      }
+    });
+
+    $.getJSON('/rp', function(data){
+
+      for(var i=0; i<15; i++){
+        $('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a></p></li>').appendTo('#helper');
+
+      }
+    });
+
+    $.getJSON('/lobster', function(data){
+
+      for (var i = 0; i<15; i++) {
+        $('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a></p></li>').appendTo('#helper');
+
+      }
+    });
+  })
 
 });
-

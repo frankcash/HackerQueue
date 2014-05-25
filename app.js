@@ -100,9 +100,9 @@ function RProg(callback){
     if(!error && response.statusCode == 200){
       var metadataArray = [ ];
       var $ = cheerio.load(html);
-      
+
       $('a.title').each(function(i, element){
-        
+
         var a=$(this);
 
         var title=a.text();
@@ -112,7 +112,7 @@ function RProg(callback){
           title:title,
           url:url
         };
-        
+
         metadataArray.push(metadata);
       });
       callback(metadataArray);
@@ -131,6 +131,125 @@ app.get('/rp', function(req,res) { // pushes the info to a sub url
 
 //end rprog stuff
 
+metadataArray = [ ];
+
+////////////////////////// for recent /////////////////////////////////////////
+
+// Start Ycombnew stuff
+
+function YCombNew(callback){
+  request('https://news.ycombinator.com/newest', function(error, response, html){
+      if(!error && response.statusCode === 200){
+        var metadataArray = [ ];
+        var $ = cheerio.load(html);
+        $('span.comhead').each(function(i, element){
+        var a=$(this).prev(); //selects previous data
+        var rank=a.parent().parent().text(); //gets ranks by parsing text two elements higher
+        var title=a.text(); // parses link title
+        var url=a.attr('href'); // parses href attribute from "a" element
+        var subtext = a.parent().parent().next().children('.subtext').children(); // gets the subtext from the children
+        var points = $(subtext).eq(0).text();
+        var username = $(subtext).eq(1).text();
+        var comments = $(subtext).eq(2).text();
+
+        var metadata = { // creates a new object
+          rank: parseInt(rank),
+          title:title,
+          url:url,
+          points: parseInt(points),
+          username: username,
+          comments: parseInt(comments)
+        };
+        metadataArray.push(metadata); // pushes the object
+        });
+        callback(metadataArray);
+      }
+  });
+}
+
+app.get('/ynew', function(req,res) { // pushes the info to a sub url
+  YCombNew(function(data){ // call back to the function
+    res.send(data)
+  });
+})
+
+
+// end ycombnew
+
+metadataArray = [ ]; // clears the array
+
+// start Lobsternew stuff
+
+function LobsterNew(callback){
+  request('https://lobste.rs/recent', function(error, response, html){
+      if(!error && response.statusCode === 200){
+        var metadataArray = [ ];
+
+        var $ = cheerio.load(html);
+        $('span.link').each(function(i, element){
+        var a=$(this); //selects previous data
+        var url=a.children().attr('href'); // parses href attribute from "a" element
+        var title=a.text(); // parses link title
+        var metadata = { // creates a new object
+          title:title,
+          url:url
+        };
+        metadataArray.push(metadata); // pushes the object
+        });
+        callback(metadataArray);
+      }
+  });
+}
+
+app.get('/lnew', function(req,res) { // pushes the info to a sub url
+  LobsterNew(function(data){ // call back to the function
+    res.send(data)
+  });
+})
+
+// end Lobsternew stuff
+
+metadataArray = [ ]; // clears the array
+
+// rprognew stuff here
+
+function RProgNew(callback){
+  request('http://www.reddit.com/r/programming/new/', function(error, response, html){
+    if(!error && response.statusCode == 200){
+      var metadataArray = [ ];
+      var $ = cheerio.load(html);
+
+      $('a.title').each(function(i, element){
+
+        var a=$(this);
+
+        var title=a.text();
+        var url=a.attr('href');
+
+        var metadata = {
+          title:title,
+          url:url
+        };
+
+        metadataArray.push(metadata);
+      });
+      callback(metadataArray);
+    }
+
+  });
+
+}
+
+
+app.get('/rnew', function(req,res) { // pushes the info to a sub url
+  RProgNew(function(data){ // call back to the function
+    res.send(data)
+  });
+})
+
+//end rprognew stuff
+
+/////////////////////////////// end of for recent //////////////////////////////
 
 metadataArray = [ ]; // clears the array
 
