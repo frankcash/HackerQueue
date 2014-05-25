@@ -26,3 +26,7 @@ $( document ).ready(function() {
     location.reload();
   });
 });
+
+$( document ).ready(function() {
+  $('#refresh').css( 'cursor', 'pointer' );
+  });
