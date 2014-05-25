@@ -1,8 +1,9 @@
 @import url("http://fonts.googleapis.com/css?family=Quicksand");
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,
 a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,
-small,strike,strong,sub,sup,tt,var,dl,dt,dd,ol,ul,li,fieldset,form,label,
+small,strike,strong,sub,tt,var,dl,dt,dd,ol,ul,li,fieldset,form,label,
 legend,table,caption,tbody,tfoot,thead,tr,th,
+
 td {
   margin: 0;
   padding: 0;
@@ -110,3 +111,4 @@ footer {
   padding-top: 5px;
   font-size: 13px;
 }
+sup {font-size:xx-small; vertical-align:super;}

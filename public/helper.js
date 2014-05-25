@@ -1,6 +1,6 @@
 $.getJSON('/ycomb', function(data){
   for(var i = 0; i<15;i++){
-    $('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a></p></li>').appendTo('#helper');
+    $('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title +'</a> <sup>HN</sup> </p></li>').appendTo('#helper');
 
   }
 });
@@ -8,7 +8,7 @@ $.getJSON('/ycomb', function(data){
 $.getJSON('/rp', function(data){
 
 	for(var i=0; i<15; i++){
-		$('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a></p></li>').appendTo('#helper');
+		$('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a><sup>/r/programming</sup></p></li>').appendTo('#helper');
 
 	}
 });
@@ -16,7 +16,7 @@ $.getJSON('/rp', function(data){
 $.getJSON('/lobster', function(data){
 
 	for (var i = 0; i<15; i++) {
-		$('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a></p></li>').appendTo('#helper');
+		$('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a><sup>Lobste.rs</sup></p></li>').appendTo('#helper');
 
   }
 });
@@ -54,7 +54,7 @@ $( document ).ready(function() {
   				var re = new RegExp(q, "i");
   				var treble = re.test(data[i].title);
   				if(treble == true){
-  					$('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a></p></li>').appendTo('#helper');
+  					$('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a><sup>Lobste.rs</sup></p></li>').appendTo('#helper');
 
   				}
   			}
@@ -65,7 +65,7 @@ $( document ).ready(function() {
   				var re = new RegExp(q, "i");
   				var treble = re.test(data[i].title);
   				if(treble == true){
-  					$('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a></p></li>').appendTo('#helper');
+  					$('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a><sup>/r/programming</sup></p></li>').appendTo('#helper');
 
   				}
   			}
@@ -76,7 +76,7 @@ $( document ).ready(function() {
   				var re = new RegExp(q, "i");
   				var treble = re.test(data[i].title);
   				if(treble == true){
-  					$('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a></p></li>').appendTo('#helper');
+  					$('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a><sup>HN</sup></p></li>').appendTo('#helper');
 
   				}
   			}
@@ -87,8 +87,8 @@ $( document ).ready(function() {
         var re = new RegExp(q, "i");
         var treble = re.test(data[i].title);
         if(treble == true){
-          $('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a></p></li>').appendTo('#helper');
-          
+          $('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a></p><sup>HN</sup></li>').appendTo('#helper');
+
         }
       }
     });
@@ -98,7 +98,7 @@ $( document ).ready(function() {
         var re = new RegExp(q, "i");
         var treble = re.test(data[i].title);
         if(treble == true){
-          $('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a></p></li>').appendTo('#helper');
+          $('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a><sup>/r/programming</sup></p></li>').appendTo('#helper');
 
         }
       }
@@ -109,7 +109,7 @@ $( document ).ready(function() {
         var re = new RegExp(q, "i");
         var treble = re.test(data[i].title);
         if(treble == true){
-          $('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a></p></li>').appendTo('#helper');
+          $('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a><sup>Lobste.rs</sup></p></li>').appendTo('#helper');
 
         }
       }
@@ -122,7 +122,7 @@ $( document ).ready(function() {
     $("#res").remove();
     $.getJSON('/ynew', function(data){
       for(var i = 0; i<15;i++){
-        $('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a></p></li>').appendTo('#helper');
+        $('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a><sup>HN</sup></p></li>').appendTo('#helper');
 
       }
     });
@@ -130,7 +130,7 @@ $( document ).ready(function() {
     $.getJSON('/rnew', function(data){
 
       for(var i=0; i<15; i++){
-        $('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a></p></li>').appendTo('#helper');
+        $('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a><sup>/r/programming</sup></p></li>').appendTo('#helper');
 
       }
     });
@@ -138,7 +138,7 @@ $( document ).ready(function() {
     $.getJSON('/lnew', function(data){
 
       for (var i = 0; i<15; i++) {
-        $('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a></p></li>').appendTo('#helper');
+        $('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a><sup>Lobste.rs</sup></p></li>').appendTo('#helper');
 
       }
     });
@@ -150,7 +150,7 @@ $( document ).ready(function() {
     $("#res").remove();
     $.getJSON('/ycomb', function(data){
       for(var i = 0; i<15;i++){
-        $('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a></p></li>').appendTo('#helper');
+        $('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a><sup>HN</sup></p></li>').appendTo('#helper');
 
       }
     });
@@ -158,7 +158,7 @@ $( document ).ready(function() {
     $.getJSON('/rp', function(data){
 
       for(var i=0; i<15; i++){
-        $('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a></p></li>').appendTo('#helper');
+        $('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a><sup>/r/programming</sup></p></li>').appendTo('#helper');
 
       }
     });
@@ -166,7 +166,7 @@ $( document ).ready(function() {
     $.getJSON('/lobster', function(data){
 
       for (var i = 0; i<15; i++) {
-        $('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a></p></li>').appendTo('#helper');
+        $('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a><sup>Lobste.rs</sup></p></li>').appendTo('#helper');
 
       }
     });
