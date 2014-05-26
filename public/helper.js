@@ -1,24 +1,23 @@
-$.getJSON('/ycomb', function(data){
-  for(var i = 0; i<15;i++){
-    $('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title +'</a> <sup>HN</sup> </p></li>').appendTo('#helper');
-
+function createPost(data, site){
+  for(var i = 0; i< 15; i++){
+    $('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">'
+    + data[i].title +'</a> <sup>' + site + '</sup> </p></li>').appendTo('#helper');
   }
+}
+
+$.getJSON('/ycomb', function(data){
+  var site = "HN";
+  createPost(data, site)
 });
 
 $.getJSON('/rp', function(data){
-
-	for(var i=0; i<15; i++){
-		$('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a><sup>/r/programming</sup></p></li>').appendTo('#helper');
-
-	}
+  var site = "r/programming";
+  createPost(data, site)
 });
 
 $.getJSON('/lobster', function(data){
-
-	for (var i = 0; i<15; i++) {
-		$('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a><sup>Lobste.rs</sup></p></li>').appendTo('#helper');
-
-  }
+  var site = "Lobste.rs";
+  createPost(data, site)
 });
 
 $( document ).ready(function() {
@@ -121,26 +120,20 @@ $( document ).ready(function() {
     $("li").remove();
     $("#res").remove();
     $.getJSON('/ynew', function(data){
-      for(var i = 0; i<15;i++){
-        $('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a><sup>HN</sup></p></li>').appendTo('#helper');
-
-      }
+      var site = "HN";
+      createPost(data, site)
     });
 
     $.getJSON('/rnew', function(data){
 
-      for(var i=0; i<15; i++){
-        $('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a><sup>/r/programming</sup></p></li>').appendTo('#helper');
-
-      }
+      var site = "r/programming";
+      createPost(data, site)
     });
 
     $.getJSON('/lnew', function(data){
 
-      for (var i = 0; i<15; i++) {
-        $('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a><sup>Lobste.rs</sup></p></li>').appendTo('#helper');
-
-      }
+      var site = "Lobste.rs";
+      createPost(data, site)
     });
   })
 
@@ -149,26 +142,20 @@ $( document ).ready(function() {
     $("li").remove();
     $("#res").remove();
     $.getJSON('/ycomb', function(data){
-      for(var i = 0; i<15;i++){
-        $('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a><sup>HN</sup></p></li>').appendTo('#helper');
-
-      }
+      var site = "HN";
+      createPost(data, site)
     });
 
     $.getJSON('/rp', function(data){
 
-      for(var i=0; i<15; i++){
-        $('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a><sup>/r/programming</sup></p></li>').appendTo('#helper');
-
-      }
+      var site = "r/programming";
+      createPost(data, site)
     });
 
     $.getJSON('/lobster', function(data){
 
-      for (var i = 0; i<15; i++) {
-        $('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a><sup>Lobste.rs</sup></p></li>').appendTo('#helper');
-
-      }
+      var site = "Lobste.rs";
+      createPost(data, site)
     });
   })
 

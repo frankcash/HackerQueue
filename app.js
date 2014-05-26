@@ -133,8 +133,6 @@ app.get('/rp', function(req,res) { // pushes the info to a sub url
 
 metadataArray = [ ];
 
-////////////////////////// for recent /////////////////////////////////////////
-
 // Start Ycombnew stuff
 
 function YCombNew(callback){
@@ -248,8 +246,6 @@ app.get('/rnew', function(req,res) { // pushes the info to a sub url
 })
 
 //end rprognew stuff
-
-/////////////////////////////// end of for recent //////////////////////////////
 
 metadataArray = [ ]; // clears the array
 
