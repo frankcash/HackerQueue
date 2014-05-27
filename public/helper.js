@@ -1,7 +1,11 @@
 function createPost(data, site){
   for(var i = 0; i< 15; i++){
-    $('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">'
-    + data[i].title +'</a> <sup>' + site + "</sup> </p></li>").appendTo('#helper');
+    if(data[i].title=="scribd"){
+
+    }else{
+      $('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">'
+      + data[i].title +'</a> <sup>' + site + "</sup> </p></li>").appendTo('#helper');
+    }
   }
 }
 
