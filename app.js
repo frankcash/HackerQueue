@@ -58,7 +58,7 @@ app.get('/ycomb', function(req,res) { // pushes the info to a sub url
 
 // end ycomb
 
-metadataArray = [ ]; // clears the array
+metadataArray = [ ];
 
 // start Lobster stuff
 
@@ -91,7 +91,7 @@ app.get('/lobster', function(req,res) { // pushes the info to a sub url
 
 // end Lobster stuff
 
-metadataArray = [ ]; // clears the array
+metadataArray = [ ];
 
 // rprog stuff here
 
@@ -174,7 +174,7 @@ app.get('/ynew', function(req,res) { // pushes the info to a sub url
 
 // end ycombnew
 
-metadataArray = [ ]; // clears the array
+metadataArray = [ ];
 
 // start Lobsternew stuff
 
@@ -207,7 +207,7 @@ app.get('/lnew', function(req,res) { // pushes the info to a sub url
 
 // end Lobsternew stuff
 
-metadataArray = [ ]; // clears the array
+metadataArray = [ ];
 
 // rprognew stuff here
 
@@ -247,7 +247,7 @@ app.get('/rnew', function(req,res) { // pushes the info to a sub url
 
 //end rprognew stuff
 
-metadataArray = [ ]; // clears the array
+metadataArray = [ ];
 
 
 app.set('views', __dirname + '/views') // sets dir
