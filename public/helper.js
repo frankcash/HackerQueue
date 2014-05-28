@@ -164,3 +164,13 @@ $( document ).ready(function() {
   })
 
 });
+
+$(document).ready(function() {
+    $('#refresh').mouseenter(function() {
+        $('#refresh').fadeTo('fast',1);
+    });
+    $('#refresh').mouseleave(function() {
+        $('#refresh').fadeTo('fast',.75);
+    });
+
+});
