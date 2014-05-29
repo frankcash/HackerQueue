@@ -13,9 +13,9 @@ function filteredPost(data, q, site){
   for(var i = 0; i<15; i++){
     var re = new RegExp(q, "i");
     var treble = re.test(data[i].title);
-    if(treble == true){
+    if((treble == true) && (data[i].title!="scribd")){
       $('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a><sup>' + site + '</sup></p></li>').appendTo('#helper');
-
+      
     }
   }
 }
