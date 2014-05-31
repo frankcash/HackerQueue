@@ -15,9 +15,25 @@ function filteredPost(data, q, site){
     var treble = re.test(data[i].title);
     if((treble == true) && (data[i].title!="scribd")){
       $('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a><sup>' + site + '</sup></p></li>').appendTo('#helper');
-      
+
     }
   }
+}
+
+function reFresh(){
+  $("li").remove();
+  $("#res").remove();
+  $.getJSON('/ycomb', function(data){
+    createPost(data, "HN")
+  });
+
+  $.getJSON('/rp', function(data){
+    createPost(data, "r/programming")
+  });
+
+  $.getJSON('/lobster', function(data){
+    createPost(data, "Lobste.rs")
+  });
 }
 
 $.getJSON('/ycomb', function(data){
@@ -51,7 +67,7 @@ $( document ).ready(function() {
   $('#refresh').css( 'cursor', 'pointer' );
 
   $('#refresh').click(function(){
-    location.reload();
+    reFresh()
   });
 
 	$("#searchterm").keyup( debounce (function(e){
