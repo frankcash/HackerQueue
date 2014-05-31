@@ -23,18 +23,33 @@ function filteredPost(data, q, site){
 function reFresh(){
   $("li").remove();
   $("#res").remove();
-  $.getJSON('/ycomb', function(data){
-    createPost(data, "HN")
-  });
+  if($('#top').is(':checked')) {
+    $.getJSON('/ycomb', function(data){
+      createPost(data, "HN")
+    });
 
-  $.getJSON('/rp', function(data){
-    createPost(data, "r/programming")
-  });
+    $.getJSON('/rp', function(data){
+      createPost(data, "r/programming")
+    });
 
-  $.getJSON('/lobster', function(data){
-    createPost(data, "Lobste.rs")
-  });
-}
+    $.getJSON('/lobster', function(data){
+      createPost(data, "Lobste.rs")
+    });
+  }else{
+    $.getJSON('/ynew', function(data){
+      createPost(data, "HN")
+    });
+
+    $.getJSON('/rnew', function(data){
+      createPost(data, "r/programming")
+    });
+
+    $.getJSON('/lnew', function(data){
+      createPost(data, "Lobste.rs")
+    });
+
+  }
+} // end of reFresh
 
 $.getJSON('/ycomb', function(data){
   var site = "HN";
@@ -114,20 +129,15 @@ $( document ).ready(function() {
     $("li").remove();
     $("#res").remove();
     $.getJSON('/ynew', function(data){
-      var site = "HN";
-      createPost(data, site)
+      createPost(data, "HN")
     });
 
     $.getJSON('/rnew', function(data){
-
-      var site = "r/programming";
-      createPost(data, site)
+      createPost(data, "r/programming")
     });
 
     $.getJSON('/lnew', function(data){
-
-      var site = "Lobste.rs";
-      createPost(data, site)
+      createPost(data, "Lobste.rs")
     });
   })
 
