@@ -25,7 +25,6 @@ function reFresh(){
   $("#res").remove();
   if($('#top').is(':checked')) {
     if($('#hnBox').is(':checked')){
-
       $.getJSON('/ycomb', function(data){
         var site = "HN";
         createPost(data, site)
@@ -45,17 +44,21 @@ function reFresh(){
       });
     }
   }else{
-    $.getJSON('/ynew', function(data){
-      createPost(data, "HN")
-    });
-
-    $.getJSON('/rnew', function(data){
-      createPost(data, "r/programming")
-    });
-
-    $.getJSON('/lnew', function(data){
-      createPost(data, "Lobste.rs")
-    });
+    if($('#hnBox').is(':checked')){
+      $.getJSON('/ynew', function(data){
+        createPost(data, "HN")
+      });
+    }
+    if($('#rprogBox').is(':checked')){
+      $.getJSON('/rnew', function(data){
+        createPost(data, "r/programming")
+      });
+    }
+    if($('#lobsterBox').is(':checked')){
+      $.getJSON('/lnew', function(data){
+        createPost(data, "Lobste.rs")
+      });
+    }
 
   }
 } // end of reFresh
