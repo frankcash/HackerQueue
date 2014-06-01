@@ -172,6 +172,10 @@ $(document).ready(function() {
     $('#refresh').mouseleave(function() {
         $('#refresh').fadeTo('fast',.75);
     });
+    $("#toTop").click(function () {
+      $("html, body").animate({scrollTop: 0}, 1000);
+});
+    $('#toTop').css( 'cursor', 'pointer' );
 
 });
 

@@ -165,6 +165,14 @@ footer {
   padding-top: 5px;
   font-size: 13px;
 }
+#firstFooter {
+  width 500px;
+  margin 50px auto;
+  border-top: 1px dotter #ccc;
+  padding-top: 5px;
+  font-size: 18px;
+  text-align: center;
+}
 sup {
   font-size: xx-small;
   vertical-align: super;
