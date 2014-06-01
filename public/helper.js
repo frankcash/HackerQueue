@@ -123,7 +123,7 @@ $( document ).ready(function() {
 
     });
   }
-	},500));
+},300));
 
   $("#new").click(function(){
     $("li").remove();
