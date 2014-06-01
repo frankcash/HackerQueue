@@ -172,5 +172,7 @@ $(document).ready(function() {
     $('#refresh').mouseleave(function() {
         $('#refresh').fadeTo('fast',.75);
     });
+    $('#header').headroom();
 
 });
+
