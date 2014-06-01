@@ -24,17 +24,26 @@ function reFresh(){
   $("li").remove();
   $("#res").remove();
   if($('#top').is(':checked')) {
-    $.getJSON('/ycomb', function(data){
-      createPost(data, "HN")
-    });
+    if($('#hnBox').is(':checked')){
 
-    $.getJSON('/rp', function(data){
-      createPost(data, "r/programming")
-    });
+      $.getJSON('/ycomb', function(data){
+        var site = "HN";
+        createPost(data, site)
+      });
+    }
+    if($('#lobsterBox').is(':checked')){
+      $.getJSON('/lobster', function(data){
+        var site = "Lobste.rs";
+        createPost(data, site)
+      });
 
-    $.getJSON('/lobster', function(data){
-      createPost(data, "Lobste.rs")
-    });
+    }
+    if($('#rprogBox').is(':checked')){
+      $.getJSON('/rp', function(data){
+        var site = "r/programming";
+        createPost(data, site)
+      });
+    }
   }else{
     $.getJSON('/ynew', function(data){
       createPost(data, "HN")
@@ -51,20 +60,10 @@ function reFresh(){
   }
 } // end of reFresh
 
-$.getJSON('/ycomb', function(data){
-  var site = "HN";
-  createPost(data, site)
-});
 
-$.getJSON('/rp', function(data){
-  var site = "r/programming";
-  createPost(data, site)
-});
 
-$.getJSON('/lobster', function(data){
-  var site = "Lobste.rs";
-  createPost(data, site)
-});
+
+
 
 $( document ).ready(function() {
 
@@ -85,82 +84,115 @@ $( document ).ready(function() {
     reFresh()
   });
 
+  if($('#hnBox').is(':checked')){
+
+    $.getJSON('/ycomb', function(data){
+      var site = "HN";
+      createPost(data, site)
+    });
+  }
+  if($('#lobsterBox').is(':checked')){
+    $.getJSON('/lobster', function(data){
+      var site = "Lobste.rs";
+      createPost(data, site)
+    });
+
+  }
+  if($('#rprogBox').is(':checked')){
+    $.getJSON('/rp', function(data){
+      var site = "r/programming";
+      createPost(data, site)
+    });
+  }
+
 	$("#searchterm").keyup( debounce (function(e){
     var q = $("#searchterm").val();
     $('li').remove();
     $("#res").remove();
-    // $("#helper").append("<b id=res> Results for " + q + "</b>");
-
     if($('#top').is(':checked')) {
+      if($('#lobsterBox').is(':checked')){
+    		$.getJSON("/lobster", function(data){
+          filteredPost(data, q, "Lobste.rs")
 
-  		$.getJSON("/lobster", function(data){
-        filteredPost(data, q, "Lobste.rs")
+    		})
+      }
+      if($('#rprogBox').is(':checked')){
+    		$.getJSON("/rp", function(data){
+          filteredPost(data, q, "/r/programming")
 
-  		})
+    		})
+      }
+      if($('#hnBox').is(':checked')){
+    		$.getJSON("/ycomb", function(data){
+          filteredPost(data, q, "HN")
 
-  		$.getJSON("/rp", function(data){
-        filteredPost(data, q, "/r/programming")
-
-  		})
-
-  		$.getJSON("/ycomb", function(data){
+    		})
+      }
+  }else{
+    if($('#hnBox').is(':checked')){
+      $.getJSON('/ynew', function(data){
         filteredPost(data, q, "HN")
 
-  		})
-  }else{
-    $.getJSON('/ynew', function(data){
-      filteredPost(data, q, "HN")
+      });
+    }
+    if($('#rprogBox').is(':checked')){
+      $.getJSON('/rnew', function(data){
+        filteredPost(data, q, "/r/programming")
 
-    });
+      });
+    }
+    if($('#lobsterBox').is(':checked')){
+      $.getJSON('/lnew', function(data){
+        filteredPost(data, q, "Lobste.rs")
 
-    $.getJSON('/rnew', function(data){
-      filteredPost(data, q, "/r/programming")
-
-    });
-
-    $.getJSON('/lnew', function(data){
-      filteredPost(data, q, "Lobste.rs")
-
-    });
+      });
+    }
   }
 },300));
 
   $("#new").click(function(){
     $("li").remove();
     $("#res").remove();
-    $.getJSON('/ynew', function(data){
-      createPost(data, "HN")
-    });
-
-    $.getJSON('/rnew', function(data){
-      createPost(data, "r/programming")
-    });
-
-    $.getJSON('/lnew', function(data){
-      createPost(data, "Lobste.rs")
-    });
+    if($('#hnBox').is(':checked')){
+      $.getJSON('/ynew', function(data){
+        createPost(data, "HN")
+      });
+    }
+    if($('#rprogBox').is(':checked')){
+      $.getJSON('/rnew', function(data){
+        createPost(data, "r/programming")
+      });
+    }
+    if($('#lobsterBox').is(':checked')){
+      $.getJSON('/lnew', function(data){
+        createPost(data, "Lobste.rs")
+      });
+    }
   })
 
   $("#top").click(function(){
 
     $("li").remove();
     $("#res").remove();
-    $.getJSON('/ycomb', function(data){
-      var site = "HN";
-      createPost(data, site)
-    });
+    if($('#hnBox').is(':checked')){
+      $.getJSON('/ycomb', function(data){
+        var site = "HN";
+        createPost(data, site)
+      });
+    }
+    if($('#lobsterBox').is(':checked')){
+      $.getJSON('/lobster', function(data){
+        var site = "Lobste.rs";
+        createPost(data, site)
+      });
 
-    $.getJSON('/rp', function(data){
-
-      var site = "r/programming";
-      createPost(data, site)
-    });
-
-    $.getJSON('/lobster', function(data){
-
-      var site = "Lobste.rs";
-      createPost(data, site)
-    });
+    }
+    if($('#rprogBox').is(':checked')){
+      $.getJSON('/rp', function(data){
+        var site = "r/programming";
+        createPost(data, site)
+      });
+    }
   })
 
 });
@@ -178,4 +210,3 @@ $(document).ready(function() {
     $('#toTop').css( 'cursor', 'pointer' );
 
 });
-
