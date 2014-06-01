@@ -5,17 +5,12 @@
 var request = require('request');
 var cheerio = require('cheerio');
 var express = require('express')
-  , stylus = require('stylus')
+
     , nib = require('nib')
 
 
 var app = express() // sets up the server
 
-function compile(str, path) {
-    return stylus(str)
-      .set('filename', path)
-      .use(nib());
-}
 
 // Start Ycomb stuff
 
@@ -256,11 +251,7 @@ app.set('view engine', 'jade') // tells express to use jade
 
 app.use(express.logger('dev'))
 
-app.use(stylus.middleware(
-			  { src: __dirname + '/public'
-				  , compile: compile
-				  }
-			))
+
 app.use(express.static(__dirname + '/public'))
 
 app.get('/', function (req, res) { //get index and renders it
