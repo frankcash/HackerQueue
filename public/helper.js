@@ -3,7 +3,7 @@ function createPost(data, site){
     if(data[i].title=="scribd"){
 
     }else{
-      $('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">'
+      $('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none" target="_blank">'
       + data[i].title +'</a> <sup>' + site + "</sup> </p></li>").appendTo('#helper');
     }
   }
@@ -14,7 +14,7 @@ function filteredPost(data, q, site){
     var re = new RegExp(q, "i");
     var treble = re.test(data[i].title);
     if((treble == true) && (data[i].title!="scribd")){
-      $('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none">' + data[i].title + '</a><sup>' + site + '</sup></p></li>').appendTo('#helper');
+      $('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none" target="_blank">' + data[i].title + '</a><sup>' + site + '</sup></p></li>').appendTo('#helper');
 
     }
   }
