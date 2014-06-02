@@ -9,7 +9,7 @@ Your favorite tech sites compiled down to topics you find interesting.
 F.A.Q.
 ===
 
-Q. Why did create this?
+Q. Why did we create this?
 
 A. HackerQueue was created because it gets annoying to go to more than one site for news, especially when you like to read a lot.
 
