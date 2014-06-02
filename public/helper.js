@@ -263,7 +263,7 @@ $(document).ready(function() {
     $("#lobsterBox").click(function(){
       updateForCheck()
     })
-    $("rprogBox").click(function(){
+    $("#rprogBox").click(function(){
       updateForCheck()
     })
 });
