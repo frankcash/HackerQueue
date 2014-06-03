@@ -41,7 +41,7 @@ a img {
 }
 body {
   font-family: 'Georgia';
-  background-color: #faf9f0;
+  background-color: #ecf0f1;
   color: #444;
 }
 header {
@@ -50,7 +50,7 @@ header {
   color: #fff;
   font-size: 50px;
   text-align: center;
-  background-color: #ffa500;
+  background-color: #e67e22;
   border-bottom: 1px solid #b37300;
   text-shadow: 0px -1px 0px #b37300;
 }
