@@ -2,7 +2,6 @@
 	"dependencies": {
 		"express": "3.0.0alpha4",
 		"jade": "*",
-		"stylus": "*",
 		"nib": "*",
 		"request":"2.30.0",
 		"cheerio":"0.15.0" } }

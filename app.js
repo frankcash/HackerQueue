@@ -44,8 +44,8 @@ function YComb(callback){
   });
 }
 
-app.get('/ycomb', function(req,res) { // pushes the info to a sub url
-  YComb(function(data){ // call back to the function
+app.get('/ycomb', function(req,res) {
+  YComb(function(data){
     res.send(data)
   });
 })
@@ -78,8 +78,8 @@ function Lobster(callback){
   });
 }
 
-app.get('/lobster', function(req,res) { // pushes the info to a sub url
-  Lobster(function(data){ // call back to the function
+app.get('/lobster', function(req,res) {
+  Lobster(function(data){
     res.send(data)
   });
 })
@@ -160,8 +160,8 @@ function YCombNew(callback){
   });
 }
 
-app.get('/ynew', function(req,res) { // pushes the info to a sub url
-  YCombNew(function(data){ // call back to the function
+app.get('/ynew', function(req,res) {
+  YCombNew(function(data){
     res.send(data)
   });
 })
@@ -194,8 +194,8 @@ function LobsterNew(callback){
   });
 }
 
-app.get('/lnew', function(req,res) { // pushes the info to a sub url
-  LobsterNew(function(data){ // call back to the function
+app.get('/lnew', function(req,res) {
+  LobsterNew(function(data){
     res.send(data)
   });
 })
@@ -234,8 +234,8 @@ function RProgNew(callback){
 }
 
 
-app.get('/rnew', function(req,res) { // pushes the info to a sub url
-  RProgNew(function(data){ // call back to the function
+app.get('/rnew', function(req,res) {
+  RProgNew(function(data){
     res.send(data)
   });
 })
@@ -260,4 +260,4 @@ app.get('/', function (req, res) { //get index and renders it
 			  )
 })
 
-app.listen(3000) // localhost:3000
+app.listen(3000) 
