@@ -1,4 +1,4 @@
-Techie_JS
+HackerQueue
 =========
 
 Your favorite tech sites compiled down to topics you find interesting.
