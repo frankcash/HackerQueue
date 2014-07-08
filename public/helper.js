@@ -1,10 +1,26 @@
+function commentsTemplate(info){
+  if (!info.comments_link){
+    return "No Comments";
+  }
+
+  var numComments = info.comments || 0;
+
+  return '<a style="text-decoration:none" href="' + info.comments_link + '">'
+  + numComments 
+  + ' Comments '
+  + '</a>';
+}
+
 function createPost(data, site){
   for(var i = 0; i< 15; i++){
     if(data[i].title=="scribd"){
 
     }else{
-      $('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none" target="_blank">'
-      + data[i].title +'</a> <sup>' + site + "</sup> </p></li>").appendTo('#helper');
+      $('<li id="post"><p><a href="' + data[i].url 
+        + ' "style="text-decoration:none" target="_blank">'
+        + data[i].title +'</a> <sup>' + site + " - "
+        + commentsTemplate(data[i])
+        + "</sup> </p></li>").appendTo('#helper');
     }
   }
 }

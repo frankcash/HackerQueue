@@ -18,6 +18,7 @@ function YComb(callback){
   request('https://news.ycombinator.com', function(error, response, html){
   		if(!error && response.statusCode === 200){
         var metadataArray = [ ];
+                        var YCOMB_COMMENT_URL = "https://news.ycombinator.com/"
   			var $ = cheerio.load(html);
   			$('span.comhead').each(function(i, element){
   			var a=$(this).prev(); //selects previous data
@@ -28,6 +29,7 @@ function YComb(callback){
   			var points = $(subtext).eq(0).text();
   			var username = $(subtext).eq(1).text();
   			var comments = $(subtext).eq(2).text();
+  			var comments_link = YCOMB_COMMENT_URL + $(subtext).eq(2).attr('href');
 
   			var metadata = { // creates a new object
   				rank: parseInt(rank),
@@ -35,7 +37,8 @@ function YComb(callback){
   				url:url,
   				points: parseInt(points),
   				username: username,
-  				comments: parseInt(comments)
+  				comments: parseInt(comments),
+                                comments_link:comments_link
   			};
   			metadataArray.push(metadata); // pushes the object
   			});
@@ -65,11 +68,16 @@ function Lobster(callback){
         var $ = cheerio.load(html);
         $('span.link').each(function(i, element){
         var a=$(this); //selects previous data
+        var comments_label = a.parent().children('.byline').children('span.comments_label');
+        var comments_link = comments_label.children('a').attr("href");
+        var comments = comments_label.text().match("[0-9]+") || [0];
         var url=a.children().attr('href'); // parses href attribute from "a" element
         var title=a.text(); // parses link title
         var metadata = { // creates a new object
           title:title,
-          url:url
+          url:url,
+          comments:comments[0],
+          comments_link:comments_link
         };
         metadataArray.push(metadata); // pushes the object
         });
@@ -100,12 +108,18 @@ function RProg(callback){
 
         var a=$(this);
 
+        var comments_tag = a.parent().parent().children('.flat-list').children('li.first').children('a');
+        var comments_link = comments_tag.attr("href");
+        var comments = parseInt(comments_tag.text());
+
         var title=a.text();
         var url=a.attr('href');
 
         var metadata = {
           title:title,
-          url:url
+          url:url,
+          comments:comments,
+          comments_link:comments_link
         };
 
         metadataArray.push(metadata);
@@ -185,7 +199,7 @@ function LobsterNew(callback){
         var title=a.text(); // parses link title
         var metadata = { // creates a new object
           title:title,
-          url:url
+          url:url,
         };
         metadataArray.push(metadata); // pushes the object
         });
