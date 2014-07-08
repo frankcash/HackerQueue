@@ -11,16 +11,20 @@ function commentsTemplate(info){
   + '</a>';
 }
 
+function postTemplate(info, site){
+  return $('<li id="post"><p><a href="' + info.url 
+           + ' "style="text-decoration:none" target="_blank">'
+           + info.title +'</a> <sup>' + site + " - "
+           + commentsTemplate(info)
+           + "</sup> </p></li>");
+}
+
 function createPost(data, site){
   for(var i = 0; i< 15; i++){
     if(data[i].title=="scribd"){
 
     }else{
-      $('<li id="post"><p><a href="' + data[i].url 
-        + ' "style="text-decoration:none" target="_blank">'
-        + data[i].title +'</a> <sup>' + site + " - "
-        + commentsTemplate(data[i])
-        + "</sup> </p></li>").appendTo('#helper');
+      postTemplate(data[i], site).appendTo('#helper');
     }
   }
 }
@@ -30,8 +34,7 @@ function filteredPost(data, q, site){
     var re = new RegExp(q, "i");
     var treble = re.test(data[i].title);
     if((treble == true) && (data[i].title!="scribd")){
-      $('<li id="post"><p><a href="' + data[i].url + ' "style="text-decoration:none" target="_blank">' + data[i].title + '</a><sup>' + site + '</sup></p></li>').appendTo('#helper');
-
+      postTemplate(data[i], site).appendTo('#helper');
     }
   }
 }
