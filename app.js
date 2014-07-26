@@ -27,7 +27,10 @@ function YComb(callback){
   			var subtext = a.parent().parent().next().children('.subtext').children(); // gets the subtext from the children
   			var points = $(subtext).eq(0).text();
   			var username = $(subtext).eq(1).text();
+
+                        var YCOMB_COMMENT_URL = "https://news.ycombinator.com/"
   			var comments = $(subtext).eq(2).text();
+  			var comments_link = YCOMB_COMMENT_URL + $(subtext).eq(2).attr('href');
 
   			var metadata = { // creates a new object
   				rank: parseInt(rank),
@@ -35,7 +38,8 @@ function YComb(callback){
   				url:url,
   				points: parseInt(points),
   				username: username,
-  				comments: parseInt(comments)
+  				comments: parseInt(comments),
+                                comments_link:comments_link
   			};
   			metadataArray.push(metadata); // pushes the object
   			});
@@ -67,9 +71,20 @@ function Lobster(callback){
         var a=$(this); //selects previous data
         var url=a.children().attr('href'); // parses href attribute from "a" element
         var title=a.text(); // parses link title
+
+        // Note: There currently (2014-07-12) is no comments tag to be parsed
+        //       available by scraping the Loste.rs webpage. 
+        //       This means 0 comments will have no link to the comment page.
+        var comments_label = a.parent().children('.byline').children('span.comments_label');
+        var comments_link = comments_label.children('a').attr("href");
+        var commentsMatch = comments_label.text().match("[0-9]+"); 
+        var comments = commentsMatch !== null ? commentsMatch[0] : 0;
+
         var metadata = { // creates a new object
           title:title,
-          url:url
+          url:url,
+          comments:comments,
+          comments_link:comments_link
         };
         metadataArray.push(metadata); // pushes the object
         });
@@ -100,12 +115,18 @@ function RProg(callback){
 
         var a=$(this);
 
+        var comments_tag = a.parent().parent().children('.flat-list').children('li.first').children('a');
+        var comments_link = comments_tag.attr("href");
+        var comments = parseInt(comments_tag.text());
+
         var title=a.text();
         var url=a.attr('href');
 
         var metadata = {
           title:title,
-          url:url
+          url:url,
+          comments:comments,
+          comments_link:comments_link
         };
 
         metadataArray.push(metadata);
@@ -143,7 +164,10 @@ function YCombNew(callback){
         var subtext = a.parent().parent().next().children('.subtext').children(); // gets the subtext from the children
         var points = $(subtext).eq(0).text();
         var username = $(subtext).eq(1).text();
+
+        var YCOMB_COMMENT_URL = "https://news.ycombinator.com/"
         var comments = $(subtext).eq(2).text();
+        var comments_link = YCOMB_COMMENT_URL + $(subtext).eq(2).attr('href');
 
         var metadata = { // creates a new object
           rank: parseInt(rank),
@@ -151,7 +175,8 @@ function YCombNew(callback){
           url:url,
           points: parseInt(points),
           username: username,
-          comments: parseInt(comments)
+          comments: parseInt(comments),
+          comments_link:comments_link
         };
         metadataArray.push(metadata); // pushes the object
         });
@@ -183,9 +208,21 @@ function LobsterNew(callback){
         var a=$(this); //selects previous data
         var url=a.children().attr('href'); // parses href attribute from "a" element
         var title=a.text(); // parses link title
+
+        // Note: There currently (2014-07-12) is no comments tag to be parsed
+        //       available by scraping the Loste.rs webpage. 
+        //       This means 0 comments will have no link to the comment page.
+        var comments_label = a.parent().children('.byline').children('span.comments_label');
+        var comments_link = comments_label.children('a').attr("href");
+        var commentsMatch = comments_label.text().match("[0-9]+"); 
+        var comments = commentsMatch !== null ? commentsMatch[0] : 0;
+
         var metadata = { // creates a new object
           title:title,
-          url:url
+          url:url,
+          comments:comments,
+          comments_link:comments_link
+
         };
         metadataArray.push(metadata); // pushes the object
         });
@@ -219,9 +256,15 @@ function RProgNew(callback){
         var title=a.text();
         var url=a.attr('href');
 
+        var comments_tag = a.parent().parent().children('.flat-list').children('li.first').children('a');
+        var comments_link = comments_tag.attr("href");
+        var comments = parseInt(comments_tag.text());
+
         var metadata = {
           title:title,
-          url:url
+          url:url,
+          comments:comments,
+          comments_link:comments_link
         };
 
         metadataArray.push(metadata);
