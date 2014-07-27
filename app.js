@@ -302,10 +302,11 @@ app.get('/', function (req, res) { //get index and renders it
 			  )
 })
 
-app.get('/test', function (req, res) { //get index and renders it
+app.get('/test', function (req, res) {
   res.render('test',
       { title : 'Home' }
         )
 })
+
 
 app.listen(3000)
