@@ -31,19 +31,24 @@ API Routes
 
 For Top Posts
 ==
-```/ycomb```
 
-```/lobster```
+| Call  | Site |
+| ------------- | ------------- |
+| /ycomb    | HackerNews  |
+| /lobster  | Lobste.rs  |
+| /rp       | /r/programming  |
 
-```/rp```
+
 
 For New Posts
 ==
-```/ynew```
 
-```/lnew```
+| Call  | Site |
+| ------------- | ------------- |
+| /ynew  | HackerNews/New  |
+| /lnew  | Lobste.rs/New  |
+| /rnew  | /r/programming/New  |
 
-```/rnew```
 
 Route Properties
 
