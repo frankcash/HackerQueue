@@ -24,3 +24,36 @@ A. If enough users are accumulated.
 Q. What if I want more sites to be added?
 
 A. Please create an issue report and mark it as an enhancement.  I will look into it.  If the site is related to Comp Sci/Comp Eng/ Networking or their cultures I will probably add it when I get free time.
+
+==========
+API Routes
+===
+
+For Top Posts
+==
+```/ycomb```
+
+```/lobster```
+
+```/rp```
+
+For New Posts
+==
+```/ynew```
+
+```/lnew```
+
+```/rnew```
+
+Route Properties
+
+```
+var foo = [
+  {
+    "title": "Elvish – An experimental Unix shell in Go",
+    "url": "https://github.com/xiaq/elvish",
+    "comments": 26,
+    "comments_link": "https://news.ycombinator.com/item?id=8090534"
+  }
+]
+```
