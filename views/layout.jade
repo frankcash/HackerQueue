@@ -3,14 +3,17 @@ html
   head
     title  HackerQueue
     link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular.min.js")
     script(src="http://code.jquery.com/jquery-1.11.0.min.js")
+
     link(rel='shortcut icon', href="http://i.imgur.com/kX8Dmef.jpg", type='image/x-icon')
 
 
 
-body
+    <body ng-app="app" ng-controller="AppTest as app">
     script(type='text/javascript' src='analytics.js')
     script(type='text/javascript' src='helper.js')
+    script(type='text/javascript' src='test.js')
     header
       h1 Hacker Queue
       <div style="position: center" "cursor: hand">
@@ -20,10 +23,10 @@ body
       <div id="boxes">
       <input class="check" type="checkbox" id="hnBox" name="check" checked/>
       <label class ="box"><strong>Hacker News</strong></label>
-      
+
       <input class="check" type="checkbox" id="lobsterBox" name="check" checked/>
       <label class="box"><strong>Lobste.rs</strong></label>
-      
+
       <input class="check" type="checkbox" id="rprogBox" name="check" checked/>
       <label class = "box"><strong>/r/programming</strong></label>
       </div>

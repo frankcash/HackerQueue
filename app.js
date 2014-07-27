@@ -27,8 +27,7 @@ function YComb(callback){
   			var subtext = a.parent().parent().next().children('.subtext').children(); // gets the subtext from the children
   			var points = $(subtext).eq(0).text();
   			var username = $(subtext).eq(1).text();
-
-                        var YCOMB_COMMENT_URL = "https://news.ycombinator.com/"
+        var YCOMB_COMMENT_URL = "https://news.ycombinator.com/"
   			var comments = $(subtext).eq(2).text();
   			var comments_link = YCOMB_COMMENT_URL + $(subtext).eq(2).attr('href');
 
@@ -73,11 +72,11 @@ function Lobster(callback){
         var title=a.text(); // parses link title
 
         // Note: There currently (2014-07-12) is no comments tag to be parsed
-        //       available by scraping the Loste.rs webpage. 
+        //       available by scraping the Loste.rs webpage.
         //       This means 0 comments will have no link to the comment page.
         var comments_label = a.parent().children('.byline').children('span.comments_label');
         var comments_link = comments_label.children('a').attr("href");
-        var commentsMatch = comments_label.text().match("[0-9]+"); 
+        var commentsMatch = comments_label.text().match("[0-9]+");
         var comments = commentsMatch !== null ? commentsMatch[0] : 0;
 
         var metadata = { // creates a new object
@@ -210,11 +209,11 @@ function LobsterNew(callback){
         var title=a.text(); // parses link title
 
         // Note: There currently (2014-07-12) is no comments tag to be parsed
-        //       available by scraping the Loste.rs webpage. 
+        //       available by scraping the Loste.rs webpage.
         //       This means 0 comments will have no link to the comment page.
         var comments_label = a.parent().children('.byline').children('span.comments_label');
         var comments_link = comments_label.children('a').attr("href");
-        var commentsMatch = comments_label.text().match("[0-9]+"); 
+        var commentsMatch = comments_label.text().match("[0-9]+");
         var comments = commentsMatch !== null ? commentsMatch[0] : 0;
 
         var metadata = { // creates a new object
@@ -303,4 +302,10 @@ app.get('/', function (req, res) { //get index and renders it
 			  )
 })
 
-app.listen(3000) 
+app.get('/test', function (req, res) { //get index and renders it
+  res.render('test',
+      { title : 'Home' }
+        )
+})
+
+app.listen(3000)
