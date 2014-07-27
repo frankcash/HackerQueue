@@ -6,13 +6,13 @@ function commentsTemplate(info){
   var numComments = info.comments || 0;
 
   return '<a style="text-decoration:none" href="' + info.comments_link + '">'
-  + numComments 
+  + numComments
   + ' Comments '
   + '</a>';
 }
 
 function postTemplate(info, site){
-  return $('<li id="post"><p><a href="' + info.url 
+  return $('<li id="post"><p><a href="' + info.url
            + ' "style="text-decoration:none" target="_blank">'
            + info.title +'</a> <sup>' + site + " - "
            + commentsTemplate(info)

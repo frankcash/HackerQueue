@@ -12,15 +12,15 @@ html
 
     <body ng-app="app" ng-controller="AppTest as app">
     script(type='text/javascript' src='analytics.js')
-    script(type='text/javascript' src='helper.js')
     script(type='text/javascript' src='test.js')
     header
       h1 Hacker Queue
       <div style="position: center" "cursor: hand">
       <img src="http://i.imgur.com/IQNMJ69.png" width="5%" height="5%" id="refresh"/>
       </div>
-      <input id="searchterm" type="text" placeholder= "Filter..." /><br>
+      <input id="searchterm" type="text" placeholder= "Filter..."  ng-model="searchText"/><br>
       <div id="boxes">
+
       <input class="check" type="checkbox" id="hnBox" name="check" checked/>
       <label class ="box"><strong>Hacker News</strong></label>
 
@@ -38,8 +38,8 @@ html
       #main-content
         <div id="buttons">
         <form action="" id = "newsType">
-        <input type="radio" name="newsType" value="top" id="top" checked>Top
-        <input type="radio" name="newsType" value="new" id="new" >New<br>
+        <input type="radio" name="newsType" value="top" id="top" ng-model="top">Top
+        <input type="radio" name="newsType" value="new" id="new" ng-model="new">New<br>
         </form>
         </div>
         p

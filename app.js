@@ -33,6 +33,7 @@ function YComb(callback){
 
   			var metadata = { // creates a new object
   				rank: parseInt(rank),
+          site: "HN",
   				title:title,
   				url:url,
   				points: parseInt(points),
@@ -80,6 +81,7 @@ function Lobster(callback){
         var comments = commentsMatch !== null ? commentsMatch[0] : 0;
 
         var metadata = { // creates a new object
+          site: "lobste.rs",
           title:title,
           url:url,
           comments:comments,
@@ -122,6 +124,7 @@ function RProg(callback){
         var url=a.attr('href');
 
         var metadata = {
+          site: "r/programming",
           title:title,
           url:url,
           comments:comments,
@@ -170,6 +173,7 @@ function YCombNew(callback){
 
         var metadata = { // creates a new object
           rank: parseInt(rank),
+          site: "HN",
           title:title,
           url:url,
           points: parseInt(points),
@@ -217,6 +221,7 @@ function LobsterNew(callback){
         var comments = commentsMatch !== null ? commentsMatch[0] : 0;
 
         var metadata = { // creates a new object
+          site: "lobste.rs",
           title:title,
           url:url,
           comments:comments,
@@ -260,6 +265,7 @@ function RProgNew(callback){
         var comments = parseInt(comments_tag.text());
 
         var metadata = {
+          site: "r/programming",
           title:title,
           url:url,
           comments:comments,

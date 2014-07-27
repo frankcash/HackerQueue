@@ -5,5 +5,19 @@ block content
     #helper
 
   hr
-  ul(ng-repeat="post in hackerNew")(style="list-style:disc outside; margin-left:20px;")
-    li {{ post.title }}
+  <div id="top" ng-show="top" ng-hide="new">
+  ul(ng-repeat="post in hackerTop | filter:searchText")(style="list-style:disc outside; margin-left:20px;")
+    <li id="post"><p><a href={{post.url}} style="text-decoration:none" target="_blank">{{post.title}}</a> <sup><a href={{post.comments_link}}>{{post.site}}</a></sup></p></li>
+  ul(ng-repeat="post in lobTop | filter:searchText")(style="list-style:disc outside; margin-left:20px;")
+    <li id="post"><p><a href={{post.url}} style="text-decoration:none" target="_blank">{{post.title}}</a> <sup><a href={{post.comments_link}}>{{post.site}}</a></sup></p></li>
+  ul(ng-repeat="post in rTop | filter:searchText")(style="list-style:disc outside; margin-left:20px;")
+    <li id="post"><p><a href={{post.url}} style="text-decoration:none" target="_blank">{{post.title}}</a> <sup><a href={{post.comments_link}}>{{post.site}}</a></sup></p></li>
+  </div>
+  <div id="new" ng-hide="top" ng-show="new">
+  ul(ng-repeat="post in hackerNew | filter:searchText")(style="list-style:disc outside; margin-left:20px;")
+    <li id="post"><p><a href={{post.url}} style="text-decoration:none" target="_blank">{{post.title}}</a> <sup><a href={{post.comments_link}}>{{post.site}}</a></sup></p></li>
+  ul(ng-repeat="post in lobNew | filter:searchText")(style="list-style:disc outside; margin-left:20px;")
+    <li id="post"><p><a href={{post.url}} style="text-decoration:none" target="_blank">{{post.title}}</a> <sup><a href={{post.comments_link}}>{{post.site}}</a></sup></p></li>
+  ul(ng-repeat="post in rNew | filter:searchText")(style="list-style:disc outside; margin-left:20px;")
+    <li id="post"><p><a href={{post.url}} style="text-decoration:none" target="_blank">{{post.title}}</a> <sup><a href={{post.comments_link}}>{{post.site}}</a></sup></p></li>
+  </div>
