@@ -17,6 +17,7 @@ app.controller("AppTest", function($scope, $http){
   **/
   $http.get('/ycomb').success(function(data) {
       $scope.hackerTop = data;
+      console.log(data);
   });
   $http.get('/lobster').success(function(data) {
       $scope.lobTop = data;

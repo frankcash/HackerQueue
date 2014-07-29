@@ -21,13 +21,13 @@ html
       <input id="searchterm" type="text" placeholder= "Filter..."  ng-model="searchText"/><br>
       <div id="boxes">
 
-      <input class="check" type="checkbox" id="hnBox" name="check" checked/>
+      <input class="check" type="checkbox" id="hnBox" ng-model="hn" name="check" checked/>
       <label class ="box"><strong>Hacker News</strong></label>
 
-      <input class="check" type="checkbox" id="lobsterBox" name="check" checked/>
+      <input class="check" type="checkbox" id="lobsterBox" ng-model="lobster" name="check" checked/>
       <label class="box"><strong>Lobste.rs</strong></label>
 
-      <input class="check" type="checkbox" id="rprogBox" name="check" checked/>
+      <input class="check" type="checkbox" id="rprogBox" ng-model="rprog" name="check" checked/>
       <label class = "box"><strong>/r/programming</strong></label>
       </div>
 
