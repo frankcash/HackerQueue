@@ -6,6 +6,7 @@ block content
 
   hr
   <div id="top" ng-show="content == 'first'" >
+
   <div id="hTop" ng-hide="hn">
   ul(ng-repeat="post in hackerTop | filter:searchText" style="list-style:disc outside; margin-left:20px;")
     <li id="post"><p><a href={{post.url}} style="text-decoration:none" target="_blank">{{post.title}}</a> <sup><a href={{post.comments_link}} style="text-decoration:none" target="_blank">{{post.site}}</a></sup></p></li>
@@ -18,9 +19,11 @@ block content
   ul(ng-repeat="post in rTop | filter:searchText" style="list-style:disc outside; margin-left:20px;")
     <li id="post"><p><a href={{post.url}} style="text-decoration:none" target="_blank">{{post.title}}</a> <sup><a href={{post.comments_link}} style="text-decoration:none" target="_blank">{{post.site}}</a></sup></p></li>
   </div>
+
   </div>
 
   <div id="new" ng-show="content == 'other'">
+
   <div id="hNew" ng-hide="hn">
   ul(ng-repeat="post in hackerNew | filter:searchText" style="list-style:disc outside; margin-left:20px;")
     <li id="post"><p><a href={{post.url}} style="text-decoration:none" target="_blank">{{post.title}}</a> <sup><a href={{post.comments_link}} style="text-decoration:none" target="_blank">{{post.site}}</a></sup></p></li>
@@ -29,12 +32,9 @@ block content
   ul(ng-repeat="post in lNew | filter:searchText" style="list-style:disc outside; margin-left:20px;")
     <li id="post"><p><a href={{post.url}} style="text-decoration:none" target="_blank">{{post.title}}</a> <sup><a href={{post.comments_link}} style="text-decoration:none" target="_blank">{{post.site}}</a></sup></p></li>
   </div>
-  <div id="rNew" ng-hide="rprog"
+  <div id="rNew" ng-hide="rprog">
   ul(ng-repeat="post in rNew | filter:searchText" style="list-style:disc outside; margin-left:20px;")
     <li id="post"><p><a href={{post.url}} style="text-decoration:none" target="_blank">{{post.title}}</a> <sup><a href={{post.comments_link}} style="text-decoration:none" target="_blank">{{post.site}}</a></sup></p></li>
   </div>
-  </div>
 
-  hackerNew
-  lobNew
-  rNew
+  </div>
