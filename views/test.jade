@@ -19,6 +19,7 @@ block content
     <li id="post"><p><a href={{post.url}} style="text-decoration:none" target="_blank">{{post.title}}</a> <sup><a href={{post.comments_link}} style="text-decoration:none" target="_blank">{{post.site}}</a></sup></p></li>
   </div>
   </div>
+
   <div id="new" ng-show="content == 'other'">
   <div id="hNew" ng-hide="hn">
   ul(ng-repeat="post in hackerNew | filter:searchText" style="list-style:disc outside; margin-left:20px;")
@@ -33,3 +34,7 @@ block content
     <li id="post"><p><a href={{post.url}} style="text-decoration:none" target="_blank">{{post.title}}</a> <sup><a href={{post.comments_link}} style="text-decoration:none" target="_blank">{{post.site}}</a></sup></p></li>
   </div>
   </div>
+
+  hackerNew
+  lobNew
+  rNew
