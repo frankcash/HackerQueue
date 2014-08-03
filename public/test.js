@@ -64,4 +64,10 @@ app.controller("AppTest", function($scope, $http){
     });
   }
 
+  $("#toTop").click(function () {
+    $("html, body").animate({scrollTop: 0}, 1000);
+  });
+  $('#toTop').css( 'cursor', 'pointer' );
+  $('#refresh').css( 'cursor', 'pointer' );
+
 });
