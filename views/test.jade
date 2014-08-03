@@ -26,7 +26,7 @@ block content
     <li id="post"><p><a href={{post.url}} style="text-decoration:none" target="_blank">{{post.title}}</a> <sup><a href={{post.comments_link}} style="text-decoration:none" target="_blank">{{post.site}}</a></sup></p></li>
   </div>
   <div id="lNew" ng-hide="lobster">
-  ul(ng-repeat="post in lobNew | filter:searchText" style="list-style:disc outside; margin-left:20px;")
+  ul(ng-repeat="post in lNew | filter:searchText" style="list-style:disc outside; margin-left:20px;")
     <li id="post"><p><a href={{post.url}} style="text-decoration:none" target="_blank">{{post.title}}</a> <sup><a href={{post.comments_link}} style="text-decoration:none" target="_blank">{{post.site}}</a></sup></p></li>
   </div>
   <div id="rNew" ng-hide="rprog"

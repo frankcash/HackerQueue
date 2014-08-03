@@ -17,7 +17,6 @@ app.controller("AppTest", function($scope, $http){
   **/
   $http.get('/ycomb').success(function(data) {
       $scope.hackerTop = data;
-      console.log(data);
   });
   $http.get('/lobster').success(function(data) {
       $scope.lobTop = data;
@@ -31,10 +30,10 @@ app.controller("AppTest", function($scope, $http){
   **/
   $http.get('/ynew').success(function(data) {
       $scope.hackerNew = data;
-      console.log(data);
   });
   $http.get('/lnew').success(function(data) {
       $scope.lNew = data;
+      console.log(data);
   });
   $http.get('/rnew').success(function(data) {
       $scope.rNew = data;
@@ -43,7 +42,6 @@ app.controller("AppTest", function($scope, $http){
   $scope.refresh = function(){
     $http.get('/ycomb').success(function(data) {
         $scope.hackerTop = data;
-        console.log(data);
     });
     $http.get('/lobster').success(function(data) {
         $scope.lobTop = data;
