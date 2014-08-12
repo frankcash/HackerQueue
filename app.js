@@ -302,17 +302,17 @@ app.use(express.logger('dev'))
 
 app.use(express.static(__dirname + '/public'))
 
-app.get('/', function (req, res) { //get index and renders it
+app.get('/old', function (req, res) { //get index and renders it
   res.render('index',
 		  { title : 'Home' }
 			  )
 })
 
-app.get('/test', function (req, res) {
+app.get('/', function (req, res) {
   res.render('test',
       { title : 'Home' }
         )
 })
 
 
-app.listen(3000)
+app.listen(80)
