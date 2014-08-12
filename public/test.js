@@ -11,6 +11,8 @@ app.controller("AppTest", function($scope, $http){
   $scope.hackerNew = "";
   $scope.lobNew = "";
   $scope.rNew = "";
+  $scope.content="first";
+
 
   /**
   For top posts
@@ -33,7 +35,6 @@ app.controller("AppTest", function($scope, $http){
   });
   $http.get('/lnew').success(function(data) {
       $scope.lNew = data;
-      console.log(data);
   });
   $http.get('/rnew').success(function(data) {
       $scope.rNew = data;
