@@ -1,6 +1,6 @@
 var app = angular.module("app", ['angular-loading-bar']);
 
-app.controller("AppTest", function($scope, $http){
+app.controller("AppTest", function($scope, $http, $location, $anchorScroll){
   /**
   global vars
   **/
@@ -65,9 +65,11 @@ app.controller("AppTest", function($scope, $http){
     });
   }
 
-  $("#toTop").click(function () {
-    $("html, body").animate({scrollTop: 0}, 1000);
-  });
+  $scope.goToTop = function(){
+    $location.hash('refresh');
+    $anchorScroll();
+  }
+
   $('#toTop').css( 'cursor', 'pointer' );
   $('#refresh').css( 'cursor', 'pointer' );
 
