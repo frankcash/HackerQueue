@@ -146,3 +146,11 @@ sup {
 #boxes {
   text-align: center;
 }
+
+#toTop{
+	cursor: pointer;
+}
+
+#refresh{
+	cursor: pointer;
+}

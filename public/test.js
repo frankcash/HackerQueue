@@ -70,7 +70,5 @@ app.controller("AppTest", function($scope, $http, $location, $anchorScroll){
     $anchorScroll();
   }
 
-  $('#toTop').css( 'cursor', 'pointer' );
-  $('#refresh').css( 'cursor', 'pointer' );
 
 });
