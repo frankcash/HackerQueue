@@ -303,18 +303,11 @@ app.use(express.logger('dev'))
 app.use(express.static(__dirname + '/public'))
 
 
-app.get('/old', function (req, res) { //get index and renders it
-  res.render('index',
-		  { title : 'Home' }
-			  )
-})
-
-
 app.get('/', function (req, res) {
-  res.render('test',
+  res.render('main',
       { title : 'Home' }
         )
 })
 
-
+console.log("now running");
 app.listen(3000)
