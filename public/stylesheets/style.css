@@ -154,3 +154,28 @@ sup {
 #refresh{
 	cursor: pointer;
 }
+
+.link_content
+{
+  display: table;
+}
+
+.link_content img, .link_content a
+{
+  display: table-cell;
+  vertical-align: middle;
+  padding: 10px;
+}
+
+.link_content a
+{
+  font-family: sans-serif;
+  font-size: 1.1em;
+}
+
+#searchterm
+{
+  font-size: 21px;
+  text-align: center;
+  border-radius: 1.5em;
+}
