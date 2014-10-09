@@ -237,6 +237,11 @@ function LobsterNew(callback){
         };
         metadataArray.push(metadata); // pushes the object
         });
+        // Iterate through every link's score
+        $('div.score').each(function (i, element) {
+          // push the score value to it's respective link object
+          metadataArray[i].votes = $(this).text();
+        });
         callback(metadataArray);
       }
   });
@@ -282,12 +287,8 @@ function RProgNew(callback){
         metadataArray.push(metadata);
       });
 
-      // Iterate through every link's score
-      $('div.score').each(function (i, element) {
-        // push the score value to it's respective link object
-        metadataArray[i].votes = $(this).text();
-      });
-        
+      
+
       callback(metadataArray);
     }
 
