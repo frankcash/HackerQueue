@@ -179,3 +179,11 @@ sup {
   text-align: center;
   border-radius: 1.5em;
 }
+
+.visited_comment_link img
+{
+  -webkit-filter: grayscale(1);
+     -moz-filter: grayscale(1);
+       -o-filter: grayscale(1);
+          filter: grayscale(1);
+}
