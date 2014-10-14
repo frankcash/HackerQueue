@@ -1,23 +1,23 @@
 extend layout
 
 block content
-  ul(style="list-style:disc outside; margin-left:20px;")
+  ul(style="list-style-type: none; margin-left:20px;")
     #helper
 
   hr
   <div id="top" ng-show="content == 'first'" >
 
   <div id="hTop" ng-hide="hn">
-  ul(ng-repeat="post in hackerTop | filter:searchText" style="list-style:disc outside; margin-left:20px;")
-    <li id="post"><p><a href={{post.url}} style="text-decoration:none" target="_blank">{{post.title}}</a> <sup><a href={{post.comments_link}} style="text-decoration:none" target="_blank">{{post.site}}</a></sup></p></li>
+  ul(ng-repeat="post in hackerTop | filter:searchText" style="list-style-type: none; margin-left:20px;")
+    <li id="post"><p class="link_content"><a href="{{post.comments_link}}" target="_blank"><img src="../assets/hn_icon_32.png"/></a><a href={{post.url}} style="text-decoration:none" target="_blank">{{post.title}}</a></p></li>
   </div>
   <div id="lTop" ng-hide="lobster">
-  ul(ng-repeat="post in lobTop | filter:searchText" style="list-style:disc outside; margin-left:20px;")
-    <li id="post"><p><a href={{post.url}} style="text-decoration:none" target="_blank">{{post.title}}</a> <sup><a href={{post.comments_link}} style="text-decoration:none" target="_blank">{{post.site}}</a></sup></p></li>
+  ul(ng-repeat="post in lobTop | filter:searchText" style="list-style-type: none; margin-left:20px;")
+    <li id="post"><p class="link_content"><a href="{{post.comments_link}}" target="_blank"><img src="../assets/lb_icon_32.png"/></a><a href={{post.url}} style="text-decoration:none" target="_blank">{{post.title}}</a></p></li>
   </div>
   <div id="rTop" ng-hide="rprog">
-  ul(ng-repeat="post in rTop | filter:searchText" style="list-style:disc outside; margin-left:20px;")
-    <li id="post"><p><a href={{post.url}} style="text-decoration:none" target="_blank">{{post.title}}</a> <sup><a href={{post.comments_link}} style="text-decoration:none" target="_blank">{{post.site}}</a></sup></p></li>
+  ul(ng-repeat="post in rTop | filter:searchText" style="list-style-type: none; margin-left:20px;")
+    <li id="post"><p class="link_content"><a href="{{post.comments_link}}" target="_blank"><img src="../assets/rd_icon_32.png"/></a><a href={{post.url}} style="text-decoration:none" target="_blank">{{post.title}}</a></p></li>
   </div>
 
   </div>
@@ -25,16 +25,16 @@ block content
   <div id="new" ng-show="content == 'other'">
 
   <div id="hNew" ng-hide="hn">
-  ul(ng-repeat="post in hackerNew | filter:searchText" style="list-style:disc outside; margin-left:20px;")
-    <li id="post"><p><a href={{post.url}} style="text-decoration:none" target="_blank">{{post.title}}</a> <sup><a href={{post.comments_link}} style="text-decoration:none" target="_blank">{{post.site}}</a></sup></p></li>
+  ul(ng-repeat="post in hackerNew | filter:searchText" style="list-style-type: none; margin-left:20px;")
+    <li id="post"><p class="link_content"><a href="{{post.comments_link}}" target="_blank"><img src="../assets/hn_icon_32.png"/></a><a href={{post.url}} style="text-decoration:none" target="_blank">{{post.title}}</a></p></li>
   </div>
   <div id="lNew" ng-hide="lobster">
-  ul(ng-repeat="post in lNew | filter:searchText" style="list-style:disc outside; margin-left:20px;")
-    <li id="post"><p><a href={{post.url}} style="text-decoration:none" target="_blank">{{post.title}}</a> <sup><a href={{post.comments_link}} style="text-decoration:none" target="_blank">{{post.site}}</a></sup></p></li>
+  ul(ng-repeat="post in lNew | filter:searchText" style="list-style-type: none; margin-left:20px;")
+    <li id="post"><p class="link_content"><a href="{{post.comments_link}}" target="_blank"><img src="../assets/lb_icon_32.png"/></a><a href={{post.url}} style="text-decoration:none" target="_blank">{{post.title}}</a></p></li>
   </div>
   <div id="rNew" ng-hide="rprog">
-  ul(ng-repeat="post in rNew | filter:searchText" style="list-style:disc outside; margin-left:20px;")
-    <li id="post"><p><a href={{post.url}} style="text-decoration:none" target="_blank">{{post.title}}</a> <sup><a href={{post.comments_link}} style="text-decoration:none" target="_blank">{{post.site}}</a></sup></p></li>
+  ul(ng-repeat="post in rNew | filter:searchText" style="list-style-type: none; margin-left:20px;")
+    <li id="post"><p class="link_content"><a href="{{post.comments_link}}" target="_blank"><img src="../assets/rd_icon_32.png"/></a><a href={{post.url}} style="text-decoration:none" target="_blank">{{post.title}}</a></p></li>
   </div>
 
   </div>
