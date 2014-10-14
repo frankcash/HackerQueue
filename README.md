@@ -63,3 +63,9 @@ var foo = [
   }
 ]
 ```
+
+##To Run Locally
+```
+$npm install #installs dependencies
+$node app.js #runs the program
+```
