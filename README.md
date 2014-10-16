@@ -59,7 +59,8 @@ var foo = [
     "title": "Elvish – An experimental Unix shell in Go",
     "url": "https://github.com/xiaq/elvish",
     "comments": 26,
-    "comments_link": "https://news.ycombinator.com/item?id=8090534"
+    "comments_link": "https://news.ycombinator.com/item?id=8090534",
+    "points": 1337
   }
 ]
 ```
