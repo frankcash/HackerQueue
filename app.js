@@ -95,7 +95,7 @@ function Lobster(callback){
           // push the score value to it's respective link object
           metadataArray[i].votes = $(this).text();
         });
-        
+
         callback(metadataArray);
       }
   });
@@ -126,6 +126,7 @@ function RProg(callback){
         var comments_tag = a.parent().parent().children('.flat-list').children('li.first').children('a');
         var comments_link = comments_tag.attr("href");
         var comments = parseInt(comments_tag.text());
+        console.log(a.parent().parent().parent().children('.midcol').children('.unvoted').text());
 
         var title=a.text();
         var url=a.attr('href');
@@ -287,7 +288,7 @@ function RProgNew(callback){
         metadataArray.push(metadata);
       });
 
-      
+
 
       callback(metadataArray);
     }
