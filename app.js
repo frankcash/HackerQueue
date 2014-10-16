@@ -93,7 +93,7 @@ function Lobster(callback){
         // Iterate through every link's score
         $('div.score').each(function (i, element) {
           // push the score value to it's respective link object
-          metadataArray[i].votes = $(this).text();
+          metadataArray[i].points = $(this).text();
         });
 
         callback(metadataArray);
@@ -126,7 +126,7 @@ function RProg(callback){
         var comments_tag = a.parent().parent().children('.flat-list').children('li.first').children('a');
         var comments_link = comments_tag.attr("href");
         var comments = parseInt(comments_tag.text());
-        console.log(a.parent().parent().parent().children('.midcol').children('.unvoted').text());
+        var points = a.parent().parent().parent().children('.midcol').children('.unvoted').text();
 
         var title=a.text();
         var url=a.attr('href');
@@ -136,7 +136,8 @@ function RProg(callback){
           title:title,
           url:url,
           comments:comments,
-          comments_link:comments_link
+          comments_link:comments_link,
+          points: points
         };
 
         metadataArray.push(metadata);
@@ -241,7 +242,7 @@ function LobsterNew(callback){
         // Iterate through every link's score
         $('div.score').each(function (i, element) {
           // push the score value to it's respective link object
-          metadataArray[i].votes = $(this).text();
+          metadataArray[i].points = $(this).text();
         });
         callback(metadataArray);
       }
@@ -276,14 +277,18 @@ function RProgNew(callback){
         var comments_tag = a.parent().parent().children('.flat-list').children('li.first').children('a');
         var comments_link = comments_tag.attr("href");
         var comments = parseInt(comments_tag.text());
+        var points = a.parent().parent().parent().children('.midcol').children('.unvoted').text();
+
 
         var metadata = {
           site: "r/programming",
           title:title,
           url:url,
           comments:comments,
-          comments_link:comments_link
+          comments_link:comments_link,
+          points: points
         };
+
 
         metadataArray.push(metadata);
       });
