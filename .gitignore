@@ -9,3 +9,4 @@ bootstrap/img/glyphicons-halflings.png
 bootstrap/js/bootstrap.js
 bootstrap/js/bootstrap.min.js
 .DS_Store
+nohup.out
