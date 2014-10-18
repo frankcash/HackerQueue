@@ -7,6 +7,8 @@ var cheerio = require('cheerio');
 var express = require('express');
 var nib = require('nib');
 var lobstersRoute = require('./routes/lobsters.js');
+var redditRoute = require('./routes/reddit.js');
+var hackerRoute = require('./routes/hackernews.js');
 
 
 var app = express(); // sets up the server
@@ -57,55 +59,7 @@ app.get('/ycomb', function(req,res) {
 
 // end ycomb
 
-metadataArray = [ ];
 
-// start Lobster stuff
-
-function Lobster(callback){
-  request('https://lobste.rs', function(error, response, html){
-      if(!error && response.statusCode === 200){
-        var metadataArray = [ ];
-
-        var $ = cheerio.load(html);
-        $('span.link').each(function(i, element){
-        var a=$(this); //selects previous data
-        var url=a.children().attr('href'); // parses href attribute from "a" element
-        var title=a.text(); // parses link title
-
-        // Note: There currently (2014-07-12) is no comments tag to be parsed
-        //       available by scraping the Loste.rs webpage.
-        //       This means 0 comments will have no link to the comment page.
-        var comments_label = a.parent().children('.byline').children('span.comments_label');
-        var comments_link = comments_label.children('a').attr("href");
-        var commentsMatch = comments_label.text().match("[0-9]+");
-        var comments = commentsMatch !== null ? commentsMatch[0] : 0;
-
-        var metadata = { // creates a new object
-          site: "lobste.rs",
-          title:title,
-          url:url,
-          comments:comments,
-          comments_link:comments_link
-        };
-        metadataArray.push(metadata); // pushes the object
-        });
-
-        // Iterate through every link's score
-        $('div.score').each(function (i, element) {
-          // push the score value to it's respective link object
-          metadataArray[i].points = $(this).text();
-        });
-
-        callback(metadataArray);
-      }
-  });
-}
-
-// app.get('/lobster', function(req,res) {
-//   Lobster(function(data){
-//     res.send(data)
-//   });
-// })
 app.get('/lobster', lobstersRoute.ltop);
 
 // end Lobster stuff
@@ -204,58 +158,7 @@ app.get('/ynew', function(req,res) {
   });
 })
 
-
-// end ycombnew
-
-metadataArray = [ ];
-
-// start Lobsternew stuff
-
-function LobsterNew(callback){
-  request('https://lobste.rs/recent', function(error, response, html){
-      if(!error && response.statusCode === 200){
-        var metadataArray = [ ];
-
-        var $ = cheerio.load(html);
-        $('span.link').each(function(i, element){
-        var a=$(this); //selects previous data
-        var url=a.children().attr('href'); // parses href attribute from "a" element
-        var title=a.text(); // parses link title
-
-        // Note: There currently (2014-07-12) is no comments tag to be parsed
-        //       available by scraping the Loste.rs webpage.
-        //       This means 0 comments will have no link to the comment page.
-        var comments_label = a.parent().children('.byline').children('span.comments_label');
-        var comments_link = comments_label.children('a').attr("href");
-        var commentsMatch = comments_label.text().match("[0-9]+");
-        var comments = commentsMatch !== null ? commentsMatch[0] : 0;
-
-        var metadata = { // creates a new object
-          site: "lobste.rs",
-          title:title,
-          url:url,
-          comments:comments,
-          comments_link:comments_link
-
-        };
-        metadataArray.push(metadata); // pushes the object
-        });
-        // Iterate through every link's score
-        $('div.score').each(function (i, element) {
-          // push the score value to it's respective link object
-          metadataArray[i].points = $(this).text();
-        });
-        callback(metadataArray);
-      }
-  });
-}
-
-app.get('/lnew', function(req,res) {
-  LobsterNew(function(data){
-    res.send(data)
-  });
-})
-
+app.get('/lnew', lobstersRoute.lnew);
 // end Lobsternew stuff
 
 metadataArray = [ ];
