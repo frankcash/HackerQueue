@@ -4,12 +4,12 @@
 
 var request = require('request');
 var cheerio = require('cheerio');
-var express = require('express')
+var express = require('express');
+var nib = require('nib');
+var lobstersRoute = require('./routes/lobsters.js');
 
-    , nib = require('nib')
 
-
-var app = express() // sets up the server
+var app = express(); // sets up the server
 
 
 // Start Ycomb stuff
@@ -101,11 +101,12 @@ function Lobster(callback){
   });
 }
 
-app.get('/lobster', function(req,res) {
-  Lobster(function(data){
-    res.send(data)
-  });
-})
+// app.get('/lobster', function(req,res) {
+//   Lobster(function(data){
+//     res.send(data)
+//   });
+// })
+app.get('/lobster', lobstersRoute.ltop);
 
 // end Lobster stuff
 
