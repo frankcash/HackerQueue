@@ -21,10 +21,9 @@ var quicksort = function (arr) {
 };
 
 app.controller("AppTest", function($scope, $http, $location, $anchorScroll){
-  /**
-  global vars
-  **/
+  // Global Variables
   app=this;
+  var sites = ['HN', 'lobsters', 'r/programming'];
   $scope.content="first";
   $scope.posts = [];
   $scope.routes = ['/ycomb', '/lobster', '/rp'];
@@ -38,6 +37,12 @@ app.controller("AppTest", function($scope, $http, $location, $anchorScroll){
       for(datum in data)
         $scope.posts.push(data[datum]);
       $scope.posts = quicksort($scope.posts);
+      // change points of posts based on top rated post on site
+      for(site in sites)
+        for(post in $scope.posts)
+          if($scope.posts[post].site === site)
+            $scope.posts[post].points = $scope.posts[post].points/$scope.posts[0];
+      $scope.posts = quicksort($scope.posts);
     });
 
   // New Posts
@@ -46,7 +51,14 @@ app.controller("AppTest", function($scope, $http, $location, $anchorScroll){
       for(datum in data)
         $scope.new_posts.push(data[datum]);
       $scope.new_posts = quicksort($scope.new_posts);
+      // change points of posts based on top rated post on site
+      for(site in sites)
+        for(post in $scope.new_posts)
+          if($scope.new_posts[post].site === site)
+            $scope.new_posts[post].points = $scope.new_posts[post].points/$scope.new_posts[0];
+      $scope.new_posts = quicksort($scope.new_posts);
     });
+
 
   $scope.refresh = function(){
     // Top Posts
