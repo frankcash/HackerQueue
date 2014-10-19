@@ -20,6 +20,23 @@ var quicksort = function (arr) {
   return quicksort(left).concat(pivot, quicksort(right));
 };
 
+app.filter('searchTitle', function(){
+  return function (arr, searchString) {
+    if(!searchString)
+      return arr
+    
+    var result = [];
+
+    searchString = searchString.toLowerCase();
+
+    angular.forEach(arr, function (item) {
+      if(item.title.toLowerCase().indexOf(searchString) !== -1)
+        result.push(item);
+    });
+    return result;
+  };
+});
+
 app.controller("AppTest", function($scope, $http, $location, $anchorScroll){
   // Global Variables
   app=this;

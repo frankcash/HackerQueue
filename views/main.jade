@@ -7,7 +7,7 @@ block content
   hr
 
   div#top(ng-show="content == 'first'")
-    ul(ng-repeat='post in posts track by $index | filter:searchText')
+    ul(ng-repeat='post in posts | searchTitle: searchText track by $index')
       li#post(ng-class="{'hidden': (post.site == 'HN' && hn) || (post.site == 'lobste.rs' && lobster) || (post.site == 'r/programming' && rprog)}")
         p.link_content
           a(href='{{post.comments_link}}', target='_blank', ng-click='visitedComment=true;', ng-class='{"visited_comment_link": visitedComment}')
@@ -15,7 +15,7 @@ block content
           a(href='{{post.url}}', target='_blank') {{post.title}}
 
   div#new(ng-show="content == 'other'")
-    ul(ng-repeat='post in new_posts track by $index | filter:searchText')
+    ul(ng-repeat='post in new_posts | searchTitle: searchText track by $index')
       li#post
         p.link_content
           a(href='{{post.comments_link}}', target='_blank', ng-click='visitedComment=true;', ng-class='{"visited_comment_link": visitedComment}')
