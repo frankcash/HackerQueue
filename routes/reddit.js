@@ -25,7 +25,8 @@ exports.rtop = function(req,res){
           url:url,
           comments:comments,
           comments_link:comments_link,
-          points: points
+          points: points,
+          icon: 'assets/rd_icon_32.png'
         };
 
         metadataArray.push(metadata);
@@ -62,7 +63,8 @@ exports.rnew = function(req,res){
           url:url,
           comments:comments,
           comments_link:comments_link,
-          points: points
+          points: points,
+          icon: 'assets/rd_icon_32.png'
         };
 
 

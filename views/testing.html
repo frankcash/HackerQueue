@@ -1,0 +1,10 @@
+<ul ng-repeat="post in posts track by $index | filter:searchText">
+	<li id="post">
+		<p class="link_content">
+			<a href="{{post.comments_link}}" target="_blank" ng-click="visitedComment=true;" ng-class="{'visited_comment_link': visitedComment}">
+				<img ng-src="{{post.icon}}" alt="">
+			</a>
+			<a href="{{post.url}}" target="_blank">{{post.title}}</a>
+		</p>
+	</li>
+</ul>
