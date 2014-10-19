@@ -54,6 +54,12 @@ header {
   border-bottom: 1px solid #b37300;
   text-shadow: 0px -1px 0px #b37300;
 }
+.centered{
+  text-align: center;
+}
+h2.centered{
+  font-size: 22px;
+}
 .hidden{
   display: none;
 }

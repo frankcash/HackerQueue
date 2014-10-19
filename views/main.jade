@@ -13,6 +13,8 @@ block content
           a(href='{{post.comments_link}}', target='_blank', ng-click='visitedComment=true;', ng-class='{"visited_comment_link": visitedComment}')
             img(ng-src='{{post.icon}}', alt='')
           a(href='{{post.url}}', target='_blank') {{post.title}}
+    div(ng-show="!(posts | searchTitle: searchText).length")
+      h2.centered Sorry, no articles were found.
 
   div#new(ng-show="content == 'other'")
     ul(ng-repeat='post in new_posts | searchTitle: searchText track by $index')
@@ -21,3 +23,5 @@ block content
           a(href='{{post.comments_link}}', target='_blank', ng-click='visitedComment=true;', ng-class='{"visited_comment_link": visitedComment}')
             img(ng-src='{{post.icon}}', alt='')
           a(href='{{post.url}}', target='_blank') {{post.title}}
+    div(ng-show="!(new_posts | searchTitle: searchText).length")
+      h2.centered Sorry, no articles were found.
