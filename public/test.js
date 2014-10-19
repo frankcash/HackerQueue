@@ -42,7 +42,20 @@ app.controller("AppTest", function($scope, $http, $location, $anchorScroll){
         for(post in $scope.posts)
           if($scope.posts[post].site === site)
             $scope.posts[post].points = $scope.posts[post].points/$scope.posts[0];
+      // update order once points are changed
       $scope.posts = quicksort($scope.posts);
+
+      var removedPosts = [];
+      for (var post = $scope.posts.length - 1; post >= 0; post--) {
+        if($scope.posts[post].points == decodeURI('%E2%80%A2'))
+        {
+          var index = $scope.posts.indexOf($scope.posts[post]);
+          $scope.posts.splice(index, 1);
+          removedPosts.push($scope.posts[post]);
+        }
+      };
+      for(post in removedPosts)
+        $scope.posts.push(removedPosts[post]);
     });
 
   // New Posts
@@ -56,7 +69,20 @@ app.controller("AppTest", function($scope, $http, $location, $anchorScroll){
         for(post in $scope.new_posts)
           if($scope.new_posts[post].site === site)
             $scope.new_posts[post].points = $scope.new_posts[post].points/$scope.new_posts[0];
+      // update order once points are changed
       $scope.new_posts = quicksort($scope.new_posts);
+
+      var new_removedPosts = [];
+      for (var post = $scope.new_posts.length - 1; post >= 0; post--) {
+        if($scope.new_posts[post].points == decodeURI('%E2%80%A2'))
+        {
+          var index = $scope.new_posts.indexOf($scope.new_posts[post]);
+          $scope.new_posts.splice(index, 1);
+          new_removedPosts.push($scope.new_posts[post]);
+        }
+      };
+      for(post in new_removedPosts)
+        $scope.new_posts.push(new_removedPosts[post]);
     });
 
 
