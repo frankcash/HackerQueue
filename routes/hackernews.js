@@ -17,7 +17,7 @@ exports.htop = function(req,res){
         var YCOMB_COMMENT_URL = "https://news.ycombinator.com/"
         var comments = $(subtext).eq(2).text();
         var comments_link = YCOMB_COMMENT_URL + $(subtext).eq(2).attr('href');
-        
+
         var metadata = { // creates a new object
           rank: parseInt(rank),
           site: "HN",
@@ -26,8 +26,7 @@ exports.htop = function(req,res){
           points: parseInt(points),
           username: username,
           comments: parseInt(comments),
-          comments_link:comments_link,
-          icon: 'assets/hn_icon_32.png'
+                                comments_link:comments_link
         };
         metadataArray.push(metadata); // pushes the object
         });
@@ -63,8 +62,7 @@ exports.hnew = function(req,res){
           points: parseInt(points),
           username: username,
           comments: parseInt(comments),
-          comments_link:comments_link,
-          icon: 'assets/hn_icon_32.png'
+          comments_link:comments_link
         };
         metadataArray.push(metadata); // pushes the object
         });

@@ -25,8 +25,7 @@ exports.ltop = function(req,res){
           title:title,
           url:url,
           comments:comments,
-          comments_link:comments_link,
-          icon: 'assets/lb_icon_32.png'
+          comments_link:comments_link
         };
         metadataArray.push(metadata); // pushes the object
         });
@@ -66,8 +65,8 @@ exports.lnew = function(req,res){
           title:title,
           url:url,
           comments:comments,
-          comments_link:comments_link,
-          icon: 'assets/lb_icon_32.png'
+          comments_link:comments_link
+
         };
         metadataArray.push(metadata); // pushes the object
         });
