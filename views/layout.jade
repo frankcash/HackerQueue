@@ -17,7 +17,7 @@ html
     script(type='text/javascript' src='loading-bar.js')
     header
       <div style="position: center" "cursor: hand">
-      <img src="/HackerQueue.png"  id="refresh" ng-click="refresh()" />
+      <span id="refresh" ng-click="refresh()">Hacker Queue</span>
       </div>
       <input id="searchterm" type="text" placeholder= "Filter..."  ng-model="searchText"/><br>
       <div id="boxes" ng-init="hn = true; lobster = true; rprog = true;">
