@@ -65,12 +65,12 @@ app.controller("AppTest", function($scope, $http, $location, $anchorScroll){
     $http.get('/rnew').success(function(data) {
         $scope.rNew = data;
     });
-  }
+  };
 
   $scope.goToTop = function(){
     $location.hash('refresh');
     $anchorScroll();
-  }
+  };
 
 
 });
