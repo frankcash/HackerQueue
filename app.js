@@ -1,11 +1,7 @@
 /*
  * * Module dependencies
  * */
-
-var request = require('request');
-var cheerio = require('cheerio');
 var express = require('express');
-var nib = require('nib');
 var lobstersRoute = require('./routes/lobsters.js');
 var redditRoute = require('./routes/reddit.js');
 var hackerRoute = require('./routes/hackernews.js');
@@ -30,21 +26,21 @@ app.get('/rnew', redditRoute.rnew);
 
 
 
-app.set('views', __dirname + '/views') // sets dir
+app.set('views', __dirname + '/views'); // sets dir
 
-app.set('view engine', 'jade') // tells express to use jade
+app.set('view engine', 'jade'); // tells express to use jade
 
-app.use(express.logger('dev'))
+app.use(express.logger('dev'));
 
 
-app.use(express.static(__dirname + '/public'))
+app.use(express.static(__dirname + '/public'));
 
 
 app.get('/', function (req, res) {
   res.render('main',
       { title : 'Home' }
-        )
-})
+    );
+});
 
 console.log("now running");
-app.listen(3000)
+app.listen(3000);

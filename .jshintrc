@@ -6,5 +6,9 @@
   "unused": true,
   "notypeof": true,
   "freeze": true,
-  "maxparams": 5
+  "maxparams": 5,
+  "globals" : {
+    "angular" : true
+  }
+
 }

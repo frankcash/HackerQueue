@@ -6,7 +6,7 @@ exports.htop = function(req,res){
       if(!error && response.statusCode === 200){
         var metadataArray = [ ];
         var $ = cheerio.load(html);
-        $('span.comhead').each(function(i, element){
+        $('span.comhead').each(function(){
         var a=$(this).prev(); //selects previous data
         var rank=a.parent().parent().text(); //gets ranks by parsing text two elements higher
         var title=a.text(); // parses link title
@@ -14,7 +14,7 @@ exports.htop = function(req,res){
         var subtext = a.parent().parent().next().children('.subtext').children(); // gets the subtext from the children
         var points = $(subtext).eq(0).text();
         var username = $(subtext).eq(1).text();
-        var YCOMB_COMMENT_URL = "https://news.ycombinator.com/"
+        var YCOMB_COMMENT_URL = "https://news.ycombinator.com/";
         var comments = $(subtext).eq(2).text();
         var comments_link = YCOMB_COMMENT_URL + $(subtext).eq(2).attr('href');
 
@@ -34,14 +34,14 @@ exports.htop = function(req,res){
       }
   });
 
-}
+};
 
 exports.hnew = function(req,res){
   request('https://news.ycombinator.com/newest', function(error, response, html){
       if(!error && response.statusCode === 200){
         var metadataArray = [ ];
         var $ = cheerio.load(html);
-        $('span.comhead').each(function(i, element){
+        $('span.comhead').each(function(){
         var a=$(this).prev(); //selects previous data
         var rank=a.parent().parent().text(); //gets ranks by parsing text two elements higher
         var title=a.text(); // parses link title
@@ -50,7 +50,7 @@ exports.hnew = function(req,res){
         var points = $(subtext).eq(0).text();
         var username = $(subtext).eq(1).text();
 
-        var YCOMB_COMMENT_URL = "https://news.ycombinator.com/"
+        var YCOMB_COMMENT_URL = "https://news.ycombinator.com/";
         var comments = $(subtext).eq(2).text();
         var comments_link = YCOMB_COMMENT_URL + $(subtext).eq(2).attr('href');
 
@@ -70,4 +70,4 @@ exports.hnew = function(req,res){
       }
   });
 
-}
+};

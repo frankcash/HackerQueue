@@ -7,7 +7,7 @@ exports.rtop = function(req,res){
       var metadataArray = [ ];
       var $ = cheerio.load(html);
 
-      $('a.title').each(function(i, element){
+      $('a.title').each(function(){
 
         var a=$(this);
 
@@ -34,7 +34,7 @@ exports.rtop = function(req,res){
     }
 
   });
-}
+};
 
 
 exports.rnew = function(req,res){
@@ -43,7 +43,7 @@ exports.rnew = function(req,res){
       var metadataArray = [ ];
       var $ = cheerio.load(html);
 
-      $('a.title').each(function(i, element){
+      $('a.title').each(function(){
 
         var a=$(this);
 
@@ -75,4 +75,4 @@ exports.rnew = function(req,res){
     }
 
   });
-}
+};
