@@ -3,6 +3,13 @@
 var request = require('request');
 var cheerio = require('cheerio');
 
+function fixSelfPost(url){
+  if(url.match("http") === null){
+    return ("https://lobste.rs" + url);
+  }
+  return url;
+}
+
 var getAlternateLink = function(a) {
   var detailsEl = a.parent();
   var storyLinerEl = detailsEl.parent();
@@ -16,7 +23,7 @@ var getAlternateLink = function(a) {
 
 var parseLobsterElement = function(a) {
   // parses href attribute from "a" element
-  var url = a.children().attr('href');
+  var url = fixSelfPost(a.children().attr('href'));
 
   // parses link title
   var title = a.text();
@@ -35,6 +42,10 @@ var parseLobsterElement = function(a) {
   // http://lobste.rs/s/lponsp
   if (!commentsLink) {
     commentsLink = getAlternateLink(a);
+  }
+
+  if(url.match("http") === null){
+    console.log(url);
   }
 
   var metadata = {
