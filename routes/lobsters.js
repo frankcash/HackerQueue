@@ -44,10 +44,6 @@ var parseLobsterElement = function(a) {
     commentsLink = getAlternateLink(a);
   }
 
-  if(url.match("http") === null){
-    console.log(url);
-  }
-
   var metadata = {
     site: "lobste.rs",
     title:title,
