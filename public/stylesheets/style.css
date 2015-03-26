@@ -192,3 +192,11 @@ sup {
        -o-filter: grayscale(1);
           filter: grayscale(1);
 }
+
+/* lets too-big element widths be fluid on mobile */
+@media (max-width: 510px) {
+  #container, #main-content, footer, #firstFooter {
+    width: inherit;
+    max-width: 95%;
+  }
+}
