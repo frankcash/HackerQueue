@@ -30,7 +30,6 @@ app.set('views', __dirname + '/views'); // sets dir
 
 app.set('view engine', 'jade'); // tells express to use jade
 
-app.use(express.logger('dev'));
 
 
 app.use(express.static(__dirname + '/public'));
