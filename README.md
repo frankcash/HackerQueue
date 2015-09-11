@@ -4,8 +4,6 @@ HackerQueue
 Your favorite tech sites compiled down to topics you find interesting.
 
 
-
-==========
 F.A.Q.
 ===
 
@@ -25,9 +23,9 @@ Q. What if I want more sites to be added?
 
 A. Please create an issue report and mark it as an enhancement.  I will look into it.  If the site is related to Comp Sci/Comp Eng/ Networking or their cultures I will probably add it when I get free time.
 
-==========
-API Routes
-===
+
+#### API Routes
+
 
 For Top Posts
 ==
@@ -50,8 +48,7 @@ For New Posts
 | /rnew  | /r/programming/New  |
 
 
-Route Properties
-
+##Route Properties
 ```
 var foo = [
   {
