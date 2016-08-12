@@ -70,3 +70,10 @@ var foo = [
 $npm install #installs dependencies
 $node app.js #runs the program
 ```
+
+
+## To run in Docker
+```
+$ docker build -t <username>/hackerqueue .   
+$ docker run -p [desired out port]:3001 -d <username>/hackerqueue
+```

@@ -14,7 +14,8 @@
 		"url": "https://github.com/frankcash/HackerQueue.git"
 	},
 	"scripts": {
-		"test": "grunt jshint"
+		"test": "grunt jshint",
+		"start": "node app.js"
 	},
 	"keywords": [
 		"aggregate",
