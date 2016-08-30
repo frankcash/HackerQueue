@@ -8,6 +8,8 @@ var hackerRoute = require('./routes/hackernews.js');
 
 var app = express(); // sets up the server
 
+var PORT = process.env.PORT || 3000;
+
 app.get('/ycomb', hackerRoute.htop);
 
 
@@ -42,4 +44,4 @@ app.get('/', function (req, res) {
 });
 
 console.log("now running");
-app.listen(3000);
+app.listen(PORT);
