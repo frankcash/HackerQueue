@@ -5,6 +5,8 @@ Your favorite tech sites compiled down to topics you find interesting.
 
 Scrapes [HackerNews](https://news.ycombinator.com/), [Lobste.rs](https://lobste.rs/), and [/r/programming](https://www.reddit.com/r/programming) and then compiles them into a searchable and viewable source.
 
+![HackerQueue](https://raw.githubusercontent.com/frankcash/HackerQueue/master/images/example.png)
+
 
 F.A.Q.
 ===
