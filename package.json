@@ -35,7 +35,7 @@
 		"mocha": "*",
 		"chai": "*",
 		"grunt": "~0.4.5",
-		"grunt-contrib-jshint": "~0.10.0",
+		"grunt-contrib-jshint": "^0.10.0",
 		"grunt-html-angular-validate": "~0.4.0"
 	}
 }
