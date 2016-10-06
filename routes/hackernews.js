@@ -14,12 +14,13 @@ function parse(html){
     var username = $(subtext).eq(1).text();
     var YCOMB_COMMENT_URL = "https://news.ycombinator.com/";
     var comments = $(subtext).eq(2).text();
+    var link = '';
     try {
-      var link = /href="(.*)"/.exec($(subtext).eq(2).html())[1]
+      link = /href="(.*)"/.exec($(subtext).eq(2).html())[1];
     } catch(err) {
-      var link = ''
+      link = '';
     }
-    var comments_link = YCOMB_COMMENT_URL + link
+    var comments_link = YCOMB_COMMENT_URL + link;
 
 
     var metadata = { // creates a new object

@@ -91,4 +91,4 @@ exports.lnew = function(req, res){
     }
   });
 };
-exports.parse = parseLobsterResponse
+exports.parse = parseLobsterResponse;
