@@ -1,6 +1,6 @@
 HackerQueue
 =========
-[![Build Status](https://travis-ci.org/gsrajadh/HackerQueue.svg?branch=master)](https://travis-ci.org/gsrajadh/HackerQueue)
+[![Build Status](https://travis-ci.org/frankcash/HackerQueue.svg?branch=master)](https://travis-ci.org/frankcash/HackerQueue)
 
 Your favorite tech sites compiled down to topics you find interesting.
 
