@@ -48,3 +48,5 @@ exports.rnew = function(req,res){
     }
   });
 };
+
+exports.parse = parse;

@@ -14,7 +14,13 @@ function parse(html){
     var username = $(subtext).eq(1).text();
     var YCOMB_COMMENT_URL = "https://news.ycombinator.com/";
     var comments = $(subtext).eq(2).text();
-    var comments_link = YCOMB_COMMENT_URL + $(subtext).eq(2).attr('href');
+    try {
+      var link = /href="(.*)"/.exec($(subtext).eq(2).html())[1]
+    } catch(err) {
+      var link = ''
+    }
+    var comments_link = YCOMB_COMMENT_URL + link
+
 
     var metadata = { // creates a new object
       rank: parseInt(rank),
@@ -49,3 +55,4 @@ exports.hnew = function(req,res){
   });
 
 };
+exports.parse = parse;
