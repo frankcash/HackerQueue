@@ -1,7 +1,7 @@
 var expect = require('chai').expect;
 var reddit = require('./reddit');
 var parse = reddit.parse;
-var redditPage = require('../test/redditPage').page
+var redditPage = require('../test/fixtures/redditPage').page
 
 describe('reddit#parse', function() {
   it(' returns an array with length of 25', function() {

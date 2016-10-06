@@ -1,7 +1,7 @@
 var expect = require('chai').expect;
 var lobsters = require('./lobsters');
 var parse = lobsters.parse;
-var lobstersPage = require('../test/lobstersPage').page
+var lobstersPage = require('../test/fixtures/lobstersPage').page
 
 describe('lobsters#parse', function() {
   it(' returns an array with length of 25', function() {

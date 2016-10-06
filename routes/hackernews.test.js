@@ -2,7 +2,7 @@
 var expect = require('chai').expect;
 var hackernews = require('./hackernews');
 var parse = hackernews.parse;
-var hackernewsPage = require('../test/hackernewsPage').page
+var hackernewsPage = require('../test/fixtures/hackernewsPage').page
 describe('hackerNews#parse', function() {
   it('returns an array of metaData', function() {
     const metaDataArray = parse(hackernewsPage);
