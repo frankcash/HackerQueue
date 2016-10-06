@@ -1,4 +1,4 @@
-module.exports.page = `<html op="news"><head><meta name="referrer" content="origin"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" type="text/css" href="news.css?PhuKoantg5oMWYOxn7py">
+exports.page = `<html op="news"><head><meta name="referrer" content="origin"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" type="text/css" href="news.css?PhuKoantg5oMWYOxn7py">
         <link rel="shortcut icon" href="favicon.ico">
           <link rel="alternate" type="application/rss+xml" title="RSS" href="rss">
         <title>Hacker News</title>
