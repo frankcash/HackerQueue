@@ -53,7 +53,7 @@ For New Posts
 | /rnew  | /r/programming/New  |
 
 
-##Route Properties
+## Route Properties
 ```
 var foo = [
   {
@@ -67,7 +67,7 @@ var foo = [
 ]
 ```
 
-##To Run Locally
+## To Run Locally
 ```
 $npm install #installs dependencies
 $node app.js #runs the program
