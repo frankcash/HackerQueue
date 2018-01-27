@@ -2,6 +2,7 @@
 
 var request = require('request');
 var cheerio = require('cheerio');
+const db = require('../db')
 
 function fixSelfPost(url){
   if(url.match("http") === null){
@@ -22,6 +23,9 @@ var getAlternateLink = function(a) {
 };
 
 var parseLobsterElement = function(a) {
+
+  const source =  "lobste.rs";
+
   // parses href attribute from "a" element
   var url = fixSelfPost(a.children().attr('href'));
 
@@ -31,25 +35,33 @@ var parseLobsterElement = function(a) {
   var commentsLabel = a.parent().children('.byline').children('span.comments_label');
   var commentsMatch = commentsLabel.text().match("[0-9]+");
   var comments = commentsMatch !== null ? commentsMatch[0] : 0;
-  var commentsLink = commentsLabel.children('a').attr("href");
+  var comments_link = commentsLabel.children('a').attr("href");
 
   // transform comments link to absolute url if relative url found
-  if (commentsLink) { commentsLink = "https://lobste.rs" + commentsLink; }
+  if (comments_link) { comments_link = "https://lobste.rs" + comments_link; }
 
   // If there is no comments link,
   // then try to create a commentsLink from the data on the page.
   // The data-shortid="lponsp" looks promising in the form:
   // http://lobste.rs/s/lponsp
-  if (!commentsLink) {
-    commentsLink = getAlternateLink(a);
+  if (!comments_link) {
+    comments_link = getAlternateLink(a);
   }
 
+  const QUERY = 'INSERT INTO "crawls" ("story_url", "source", "title", "comments", "crawled_at") VALUES($1, $2, $3, $4, $5) ON CONFLICT DO NOTHING;'
+  db.query(QUERY,[url, source, title, comments_link, new Date() ], (err, res) => {
+    if (err) {
+      console.log(err);
+      return err
+    }
+  })
+
   var metadata = {
-    site: "lobste.rs",
+    site: source,
     title:title,
     url:url,
     comments:comments,
-    comments_link:commentsLink
+    comments_link:comments_link
   };
 
   return metadata;

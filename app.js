@@ -2,6 +2,7 @@
  * * Module dependencies
  * */
 var express = require('express');
+require('dotenv').config()
 var lobstersRoute = require('./routes/lobsters.js');
 var redditRoute = require('./routes/reddit.js');
 var hackerRoute = require('./routes/hackernews.js');

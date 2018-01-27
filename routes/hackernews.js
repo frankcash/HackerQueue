@@ -1,23 +1,32 @@
-var request = require('request');
-var cheerio = require('cheerio');
+let request = require('request');
+let cheerio = require('cheerio');
+const db = require('../db')
 
-function parse(html){
-  var metadataArray = [ ];
-  var $ = cheerio.load(html);
+function parse(html, source){
+  let metadataArray = [ ];
+  let $ = cheerio.load(html);
   $('.athing').each(function(){
-    var $storylink = $(this).find('.storylink');
-    var rank = $(this).find('.rank').text();
-    var title = $storylink.text();
-    var url = $storylink.attr('href');
-    var $subtext = $(this).next();
-    var points = $subtext.find('.score').text();
-    var username = $subtext.find('.hnuser').text();
-    var $comments = $subtext.find('a').last();
-    var comments = $comments.text();
-    var YCOMB_COMMENT_URL = "https://news.ycombinator.com/";
-    var comments_link = YCOMB_COMMENT_URL + $comments.attr('href');
+    let $storylink = $(this).find('.storylink');
+    const rank = $(this).find('.rank').text();
+    const title = $storylink.text();
+    const url = $storylink.attr('href');
+    let $subtext = $(this).next();
+    const points = $subtext.find('.score').text();
+    const username = $subtext.find('.hnuser').text();
+    let $comments = $subtext.find('a').last();
+    const comments = $comments.text();
+    const YCOMB_COMMENT_URL = "https://news.ycombinator.com/";
+    const comments_link = YCOMB_COMMENT_URL + $comments.attr('href');
 
-    var metadata = { // creates a new object
+    const QUERY = 'INSERT INTO "crawls" ("story_url", "source", "title", "comments", "crawled_at") VALUES($1, $2, $3, $4, $5) ON CONFLICT DO NOTHING;'
+    db.query(QUERY,[url, "news.ycombinator.com", title, comments_link, new Date() ], (err, res) => {
+      if (err) {
+        console.log(err);
+        return err
+      }
+    })
+
+    let metadata = { // creates a new object
       rank: parseInt(rank),
       site: "HN",
       title: title,
@@ -35,7 +44,7 @@ function parse(html){
 exports.htop = function(req,res){
   request('https://news.ycombinator.com', function(error, response, html){
       if(!error && response.statusCode === 200){
-        res.send(parse(html));
+        res.send(parse(html, "news.ycombinator.com"));
       }
   });
 
@@ -44,7 +53,7 @@ exports.htop = function(req,res){
 exports.hnew = function(req,res){
   request('https://news.ycombinator.com/newest', function(error, response, html){
       if(!error && response.statusCode === 200){
-        res.send(parse(html));
+        res.send(parse(html, "news.ycombinator.com/newest"));
       }
   });
 
