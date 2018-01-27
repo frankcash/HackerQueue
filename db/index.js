@@ -1,13 +1,21 @@
 const { Pool } = require('pg')
 
-// const pool = new Pool()
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: true,
-  max: 20,
-  idleTimeoutMillis: 30000,
-  connectionTimeoutMillis: 2000,
-})
+const url = require('url');
+
+const params = url.parse(process.env.DATABASE_URL);
+const auth = params.auth.split(':');
+
+const config = {
+  user: auth[0],
+  password: auth[1],
+  host: params.hostname,
+  port: params.port,
+  database: params.pathname.split('/')[1],
+  ssl: true
+};
+
+const pool = new Pool(config)
+
 
 module.exports = {
   query: (text, params, callback) => {
