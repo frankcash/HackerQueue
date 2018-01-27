@@ -76,8 +76,8 @@ $node app.js #runs the program
 
 ## To run in Docker
 ```
-$ docker build -t <username>/hackerqueue .   
-$ docker run -p [desired out port]:3000 -d <username>/hackerqueue
+$ docker build -t hackerqueue:latest .   
+$ docker run -p [desired out port]:3000 -d hackerqueue:latest
 ```
 
 # BTC
