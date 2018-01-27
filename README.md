@@ -28,6 +28,10 @@ Q. What if I want more sites to be added?
 
 A. Please create an issue report and mark it as an enhancement.  I will look into it.  If the site is related to Comp Sci/Comp Eng/ Networking or their cultures I will probably add it when I get free time.
 
+Q. What is the purpose of the Database?
+
+A. This is purely experimental right now, you could possible run analytics queries on it if you want.
+
 
 #### API Routes
 
@@ -67,6 +71,12 @@ var foo = [
 ]
 ```
 
+## Database Config
+
+1. Create the table(s) defined in `db/schema/`.
+2. Make sure you have an env variable `DATABASE_URL="postgres://<user>:<password>@<host>:<port>/<database>"`.  If using docker-compose don't worry about the port.
+
+
 ## To Run Locally
 ```
 $npm install #installs dependencies
@@ -78,6 +88,11 @@ $node app.js #runs the program
 ```
 $ docker build -t hackerqueue:latest .   
 $ docker run -p [desired out port]:3000 -d hackerqueue:latest
+```
+
+## Running in Compose
+```
+$ docker-compose up --build
 ```
 
 # BTC
