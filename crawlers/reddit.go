@@ -1,4 +1,4 @@
-package main
+package crawlers
 
 import (
 	"fmt"
@@ -8,16 +8,8 @@ import (
 	"github.com/gocolly/colly"
 )
 
-type Item struct {
-	StoryURL  string
-	Source    string
-	comments  string
-	CrawledAt time.Time
-	Comments  string
-	Title     string
-}
-
-func main() {
+// Reddits will search the specified reddit and return objects
+func Reddits(url string) []models.Item {
 	stories := []models.Item{}
 	fmt.Print("hello")
 	// Instantiate default collector
@@ -31,7 +23,7 @@ func main() {
 		// fmt.Println(e)
 		temp := models.Item{}
 		temp.StoryURL = e.ChildAttr("a[data-event-action=title]", "href")
-		temp.Source = "https://www.reddit.com/r/programming/"
+		temp.Source = url
 		temp.Title = e.ChildText("a[data-event-action=title]")
 		temp.Comments = e.ChildAttr("a[data-event-action=comments]", "href")
 		temp.CrawledAt = time.Now()
@@ -39,12 +31,7 @@ func main() {
 		stories = append(stories, temp)
 	})
 
-	c.OnHTML("span.next-button", func(h *colly.HTMLElement) {
-
-		t := h.ChildAttr("a", "href")
-		// fmt.Println("t", t)
-		c.Visit(t)
-	})
+	// c.OnHTML("span.next-button", func(h *colly.HTMLElement) {
 
 	c.Limit(&colly.LimitRule{
 		Parallelism: 2,
@@ -56,8 +43,15 @@ func main() {
 		fmt.Println("Visiting", r.URL.String())
 
 	})
-	c.Visit("https://www.reddit.com/r/programming/")
+	c.Visit(url)
 	c.Wait()
-	fmt.Println(stories)
+	// fmt.Println(stories)
+	return stories
 
 }
+
+// func main() {
+// 	stories := reddits("https://www.reddit.com/r/programming/new/")
+// 	reddits("https://www.reddit.com/r/programming/")
+// 	fmt.Println(stories)
+// }
