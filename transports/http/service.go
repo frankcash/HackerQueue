@@ -4,6 +4,7 @@ import (
 	"os"
 	"time"
 
+	"github.com/HackerQueue/transports/http/json/handlers"
 	"github.com/gin-gonic/gin"
 )
 
@@ -29,7 +30,14 @@ func (s *Service) Start() {
 
 	router := gin.Default()
 
-	// router.LoadHTMLGlob("templates/*")
+	router.GET("/ynew", handlers.GetHNNew)
+	router.GET("/ycomb", handlers.GetHNTop)
+
+	router.GET("/lnew", handlers.GetLobNew)
+	router.GET("/lobster", handlers.GetLobTop)
+
+	router.GET("/rnew", handlers.GetRedditNew)
+	router.GET("/rp", handlers.GetRedditTop)
 
 	router.GET("/status", func(c *gin.Context) {
 		c.JSON(200, gin.H{

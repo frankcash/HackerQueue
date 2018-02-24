@@ -20,7 +20,17 @@ func GetHNNew(c *gin.Context) {
 	c.JSON(200, stories)
 }
 
-func getHNTop(c *gin.Context) {
+func GetHNTop(c *gin.Context) {
 	stories := crawlers.HackerNews("https://news.ycombinator.com/")
+	c.JSON(200, stories)
+}
+
+func GetLobTop(c *gin.Context) {
+	stories := crawlers.HackerNews("https://lobste.rs/")
+	c.JSON(200, stories)
+}
+
+func GetLobNew(c *gin.Context) {
+	stories := crawlers.HackerNews("https://lobste.rs/recent")
 	c.JSON(200, stories)
 }
