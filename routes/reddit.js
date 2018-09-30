@@ -6,17 +6,21 @@ function parse(html, source){
   let metadataArray = [ ];
   let $ = cheerio.load(html);
 
-  $('a.title').each(function(){
+  $('.Post').each(function(){
 
-    let a=$(this);
+    let post=$(this);
 
-    const comments_tag = a.parent().parent().children('.flat-list').children('li.first').children('a');
+    const title_tag   = post.find('h2');
+    const link_tag    = title_tag.parent();
+
+    const comments_tag  = post.find('a[data-click-id=comments]');
     const comments_link = comments_tag.attr("href");
-    const comments = parseInt(comments_tag.text());
-    const points = a.parent().parent().parent().children('.midcol').children('.unvoted').text();
+    const comments      = parseInt(comments_tag.text());
 
-    const title=a.text();
-    const url=a.attr('href');
+    const points = post.find('button[aria-label=upvote]').parent().children('div').text();
+
+    const title = title_tag.text();
+    const url   = link_tag.attr('href');
 
     const QUERY = 'INSERT INTO "crawls" ("story_url", "source", "title", "comments", "crawled_at") VALUES($1, $2, $3, $4, $5) ON CONFLICT DO NOTHING;'
     db.query(QUERY,[url, source, title, comments_link, new Date() ], (err, res) => {
