@@ -1,5 +1,3 @@
-
-
 var app = angular.module("app", ['angular-loading-bar']);
 
 app.controller("AppTest", function($scope, $http, $location, $anchorScroll){

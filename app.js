@@ -2,7 +2,7 @@
  * * Module dependencies
  * */
 var express = require('express');
-require('dotenv').config()
+require('dotenv').config();
 var lobstersRoute = require('./routes/lobsters.js');
 var redditRoute = require('./routes/reddit.js');
 var hackerRoute = require('./routes/hackernews.js');
@@ -13,10 +13,7 @@ var PORT = process.env.PORT || 3000;
 
 app.get('/ycomb', hackerRoute.htop);
 
-
 app.get('/lobster', lobstersRoute.ltop);
-
-
 
 app.get('/rp', redditRoute.rtop);
 
@@ -24,9 +21,7 @@ app.get('/ynew', hackerRoute.hnew);
 
 app.get('/lnew', lobstersRoute.lnew);
 
-
 app.get('/rnew', redditRoute.rnew);
-
 
 
 app.set('views', __dirname + '/views'); // sets dir
