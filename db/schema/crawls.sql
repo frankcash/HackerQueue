@@ -4,6 +4,6 @@ CREATE TABLE crawls(
     source VARCHAR(50) NOT NULL,
     title VARCHAR(255),
     comments VARCHAR(255),
-    crawled_at TIMESTAMP
-
+    crawled_at TIMESTAMP,
+    published_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
