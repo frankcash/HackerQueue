@@ -1,6 +1,7 @@
 let request = require('request');
 let cheerio = require('cheerio');
-const db = require('../db')
+const db = require('../db');
+const getTimeDiffFromString = require('../lib/time');
 
 function parse(html, source){
   let metadataArray = [ ];
@@ -12,19 +13,20 @@ function parse(html, source){
     const url = $storylink.attr('href');
     let $subtext = $(this).next();
     const points = $subtext.find('.score').text();
+    const age = $subtext.find('.age').text();
     const username = $subtext.find('.hnuser').text();
     let $comments = $subtext.find('a').last();
     const comments = $comments.text();
     const YCOMB_COMMENT_URL = "https://news.ycombinator.com/";
     const comments_link = YCOMB_COMMENT_URL + $comments.attr('href');
-
-    const QUERY = 'INSERT INTO "crawls" ("story_url", "source", "title", "comments", "crawled_at") VALUES($1, $2, $3, $4, $5) ON CONFLICT DO NOTHING;'
-    db.query(QUERY,[url, "news.ycombinator.com", title, comments_link, new Date() ], (err, res) => {
+    const published_at = getTimeDiffFromString(age);
+    const QUERY = 'INSERT INTO "crawls" ("story_url", "source", "title", "comments", "crawled_at", "published_at") VALUES($1, $2, $3, $4, $5, $6) ON CONFLICT DO NOTHING;';
+    db.query(QUERY,[url, "news.ycombinator.com", title, comments_link, new Date(),  published_at], function (err) {
       if (err) {
         console.log(err);
-        return err
+        return err;
       }
-    })
+    });
 
     let metadata = { // creates a new object
       rank: parseInt(rank),
@@ -34,7 +36,8 @@ function parse(html, source){
       points: parseInt(points),
       username: username,
       comments: parseInt(comments),
-      comments_link: comments_link
+      comments_link: comments_link,
+      published_at: published_at,
     };
     metadataArray.push(metadata); // pushes the object
   });

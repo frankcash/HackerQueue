@@ -2,7 +2,8 @@
 
 var request = require('request');
 var cheerio = require('cheerio');
-const db = require('../db')
+const db = require('../db');
+const getTimeDiffFromString = require('../lib/time');
 
 function fixSelfPost(url){
   if(url.match("http") === null){
@@ -32,10 +33,14 @@ var parseLobsterElement = function(a) {
   // parses link title
   var title = a.text();
 
-  var commentsLabel = a.parent().children('.byline').children('span.comments_label');
+  var byline = a.parent().children('.byline');
+  var commentsLabel = byline.children('span.comments_label');
   var commentsMatch = commentsLabel.text().match("[0-9]+");
   var comments = commentsMatch !== null ? commentsMatch[0] : 0;
   var comments_link = commentsLabel.children('a').attr("href");
+
+  var timestamp = byline.find('span').text();
+  var published_at = getTimeDiffFromString(timestamp);
 
   // transform comments link to absolute url if relative url found
   if (comments_link) { comments_link = "https://lobste.rs" + comments_link; }
@@ -48,20 +53,21 @@ var parseLobsterElement = function(a) {
     comments_link = getAlternateLink(a);
   }
 
-  const QUERY = 'INSERT INTO "crawls" ("story_url", "source", "title", "comments", "crawled_at") VALUES($1, $2, $3, $4, $5) ON CONFLICT DO NOTHING;'
-  db.query(QUERY,[url, source, title, comments_link, new Date() ], (err, res) => {
+  const QUERY = 'INSERT INTO "crawls" ("story_url", "source", "title", "comments", "crawled_at", "published_at") VALUES($1, $2, $3, $4, $5, $6) ON CONFLICT DO NOTHING;';
+  db.query(QUERY,[url, source, title, comments_link, new Date() ], function (err, res) {
     if (err) {
       console.log(err);
-      return err
+      return err;
     }
-  })
+  });
 
   var metadata = {
     site: source,
     title:title,
     url:url,
     comments:comments,
-    comments_link:comments_link
+    comments_link:comments_link,
+    published_at: published_at,
   };
 
   return metadata;

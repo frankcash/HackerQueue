@@ -38,7 +38,7 @@ write = async(fileName)=>{
 }
 
 function main(){
-    const query = "SELECT crawl_id, story_url, source, title, comments, crawled_at FROM crawls;";
+    const query = "SELECT crawl_id, story_url, source, title, comments, crawled_at, published_at FROM crawls;";
     const time = new Date();
     const fileName = `crawler-etl-${time}.json`;
     console.log(fileName)

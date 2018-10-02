@@ -1,6 +1,7 @@
 let request = require('request');
 let cheerio = require('cheerio');
-const db = require('../db')
+const db = require('../db');
+const getTimeDiffFromString = require('../lib/time');
 
 function parse(html, source){
   let metadataArray = [ ];
@@ -22,13 +23,16 @@ function parse(html, source){
     const title = title_tag.text();
     const url   = link_tag.attr('href');
 
-    const QUERY = 'INSERT INTO "crawls" ("story_url", "source", "title", "comments", "crawled_at") VALUES($1, $2, $3, $4, $5) ON CONFLICT DO NOTHING;'
-    db.query(QUERY,[url, source, title, comments_link, new Date() ], (err, res) => {
+    const timestamp = post.find("a[data-click-id='timestamp']").text();
+    const published_at = getTimeDiffFromString(timestamp);
+
+    const QUERY = 'INSERT INTO "crawls" ("story_url", "source", "title", "comments", "crawled_at", "published_at") VALUES($1, $2, $3, $4, $5, $6) ON CONFLICT DO NOTHING;'
+    db.query(QUERY,[url, source, title, comments_link, new Date(), published_at], function (err) {
       if (err) {
         console.log(err);
         return err
       }
-    })
+    });
 
 
     let metadata = {
@@ -37,7 +41,8 @@ function parse(html, source){
       url:url,
       comments:comments,
       comments_link:comments_link,
-      points: points
+      points: points,
+      published_at: published_at,
     };
 
     metadataArray.push(metadata);
