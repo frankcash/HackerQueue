@@ -12,3 +12,4 @@ bootstrap/js/bootstrap.min.js
 .data
 package-lock.json
 .env
+credentials/*.json
