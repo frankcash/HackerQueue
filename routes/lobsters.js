@@ -54,7 +54,7 @@ var parseLobsterElement = function(a) {
   }
 
   const QUERY = 'INSERT INTO "crawls" ("story_url", "source", "title", "comments", "crawled_at", "published_at") VALUES($1, $2, $3, $4, $5, $6) ON CONFLICT DO NOTHING;';
-  db.query(QUERY,[url, source, title, comments_link, new Date() ], function (err) {
+  db.query(QUERY,[url, source, title, comments_link, new Date(), published_at ], function (err) {
     if (err) {
       console.log(err);
       return err;
