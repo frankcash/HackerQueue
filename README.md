@@ -96,6 +96,11 @@ Windows users can follow this guide - http://www.postgresqltutorial.com/install-
     ```
     $ node app.js
     ```
+5. Visit the following URL in the browser
+    ```
+    http://localhost:3000
+    ```
+    To use a custom port set the environment variable `PORT` the the required value.
 
 
 ## To run in Docker
