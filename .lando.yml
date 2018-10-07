@@ -3,16 +3,15 @@ recipe: mean
 services:
   appserver:
     type: node:8.9
-    command: 'npm install && PORT=80 DATABASE_URL="postgres://hackerq:hackerq@database:5444/hackerq" npm start'
+    command: 'npm install && SSL=false PORT=80 DATABASE_URL="postgres://hackerq:hackerq@database:5432/hackerq" npm start'
   database:
     type: postgres
     creds:
       user: hackerq
       password: hackerq
       database: hackerq
-    install_dependencies_as_root:
-      - psql -h localhost -p 5432 -U postgres -c "CREATE DATABASE hackerq WITH ENCODING 'UTF8'"
-      - psql -h localhost -p 5432 -U hackerq -d hackerq < /app/db/schema/crawls.sql
+    run:
+      - psql -h localhost -p 5432 -U hackerq < /app/db/schema/crawls.sql
 tooling:
   psql:
     service: :host
