@@ -83,7 +83,6 @@ $npm install #installs dependencies
 $node app.js #runs the program
 ```
 
-
 ## To run in Docker
 ```
 $ docker build -t hackerqueue:latest .   
@@ -94,6 +93,11 @@ $ docker run -p [desired out port]:3000 -d hackerqueue:latest
 ```
 $ docker-compose up --build
 ```
+
+## To run using Lando
+
+1. Install Lando if you don't already have it from https://docs.devwithlando.io/installation/installing.html
+2. Start it with `lando start`. Wait a few minutes and after a while you're application should be running in `https://hackerq.lndo.site` if all went well.
 
 # BTC
 

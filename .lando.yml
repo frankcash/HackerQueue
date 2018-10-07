@@ -1,0 +1,38 @@
+name: hacker-q
+recipe: mean
+services:
+  appserver:
+    type: node:8.9
+    command: 'npm install && PORT=80 DATABASE_URL="postgres://hackerq:hackerq@database:5444/hackerq" npm start'
+  database:
+    type: postgres
+    creds:
+      user: hackerq
+      password: hackerq
+      database: hackerq
+    install_dependencies_as_root:
+      - psql -h localhost -p 5432 -U postgres -c "CREATE DATABASE hackerq WITH ENCODING 'UTF8'"
+      - psql -h localhost -p 5432 -U hackerq -d hackerq < /app/db/schema/crawls.sql
+tooling:
+  psql:
+    service: :host
+    description: Drop into a postgres shell on a database service
+    cmd: psql -h localhost -p 5432 -U postgres
+    options:
+      host:
+        description: The database service to use
+        default: database
+        alias:
+          - h
+  'db-import ':
+    service: :host
+    description: Import into database
+    cmd: /helpers/sql-import.sh
+    options:
+      host:
+        description: The database service to use
+        default: database
+        alias:
+          - h
+      no-wipe:
+        description: Do not destroy the existing database before an import
