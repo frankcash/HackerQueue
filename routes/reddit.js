@@ -30,7 +30,7 @@ function parse(html, source){
     db.query(QUERY,[url, source, title, comments_link, new Date(), published_at], function (err) {
       if (err) {
         console.log(err);
-        return err
+        return err;
       }
     });
 
