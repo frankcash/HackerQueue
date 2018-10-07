@@ -2,7 +2,7 @@
 
 var request = require('request');
 var cheerio = require('cheerio');
-const db = require('../db')
+const db = require('../db');
 
 function fixSelfPost(url){
   if(url.match("http") === null){
@@ -48,13 +48,13 @@ var parseLobsterElement = function(a) {
     comments_link = getAlternateLink(a);
   }
 
-  const QUERY = 'INSERT INTO "crawls" ("story_url", "source", "title", "comments", "crawled_at") VALUES($1, $2, $3, $4, $5) ON CONFLICT DO NOTHING;'
-  db.query(QUERY,[url, source, title, comments_link, new Date() ], (err, res) => {
+  const QUERY = 'INSERT INTO "crawls" ("story_url", "source", "title", "comments", "crawled_at") VALUES($1, $2, $3, $4, $5) ON CONFLICT DO NOTHING;';
+  db.query(QUERY,[url, source, title, comments_link, new Date() ], (err) => {
     if (err) {
       console.log(err);
-      return err
+      return err;
     }
-  })
+  });
 
   var metadata = {
     site: source,

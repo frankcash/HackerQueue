@@ -72,16 +72,35 @@ var foo = [
 ```
 
 ## Database Config
-
+You'll need to run a local instance of PostgreSQL server.
+Windows users can follow this guide - http://www.postgresqltutorial.com/install-postgresql/
 1. Create the table(s) defined in `db/schema/`.
-2. Make sure you have an env variable `DATABASE_URL="postgres://<user>:<password>@<host>:<port>/<database>"`.  If using docker-compose don't worry about the port.
+    1. Copy the command and run it in your PostgreSQL server (possible using psql shell, comes with your installation)
+2. Make sure you have an env variable `DATABASE_URL=postgres://<user>:<password>@<host>:<port>/<database>`.  If using docker-compose don't worry about the port.
 
 
 ## To Run Locally
-```
-$npm install #installs dependencies
-$node app.js #runs the program
-```
+1. Clone the project
+2. Install the dependencies 
+    ```
+    $ npm install
+    ```
+3. Make sure the PostgreSQL server is configured properly
+    1. Has a table as defined in `db/schema/`
+    2. You have the following environment variable configured -
+    ```
+    DATABASE_URL=postgres://<user>:<password>@<host>:<port>/<database>
+    ```
+3. Make sure the PostgreSQL server is running and listening on the port specified.
+4. Run HackerQueue
+    ```
+    $ node app.js
+    ```
+5. Visit the following URL in the browser
+    ```
+    http://localhost:3000
+    ```
+    To use a custom port set the environment variable `PORT` the the required value.
 
 ## To run in Docker
 ```
