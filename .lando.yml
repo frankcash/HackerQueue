@@ -3,7 +3,7 @@ recipe: mean
 services:
   appserver:
     type: node:8.9
-    command: 'npm install && SSL=false PORT=80 DATABASE_URL="postgres://hackerq:hackerq@database:5432/hackerq" npm start'
+    command: 'npm install && NOSSL=true PORT=80 DATABASE_URL="postgres://hackerq:hackerq@database:5432/hackerq" npm start'
   database:
     type: postgres
     creds:
