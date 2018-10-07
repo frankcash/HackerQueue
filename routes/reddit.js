@@ -26,7 +26,7 @@ function parse(html, source){
     const timestamp = post.find("a[data-click-id='timestamp']").text();
     const published_at = getTimeDiffFromString(timestamp);
 
-    const QUERY = 'INSERT INTO "crawls" ("story_url", "source", "title", "comments", "crawled_at", "published_at") VALUES($1, $2, $3, $4, $5, $6) ON CONFLICT DO NOTHING;'
+    const QUERY = 'INSERT INTO "crawls" ("story_url", "source", "title", "comments", "crawled_at", "published_at") VALUES($1, $2, $3, $4, $5, $6) ON CONFLICT DO NOTHING;';
     db.query(QUERY,[url, source, title, comments_link, new Date(), published_at], function (err) {
       if (err) {
         console.log(err);
