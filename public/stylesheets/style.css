@@ -140,10 +140,36 @@ sup {
   height: 20px;
   background: #fcfff4;
   text-align: center;
-
 }
-#boxes {
+#news-options {
   text-align: center;
+}
+.news-option {
+  display: inline;
+  margin-right: 15px;
+}
+#options-button {
+  font-size: 30px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 5px;
+  display: none;
+  z-index: 2;
+  background: transparent;
+  border: none;
+  color: white;
+}
+#options-close {
+  position: fixed;
+  top: 0;
+  right: 0;
+  border: none;
+  color: white;
+  background: transparent;
+  font-size: 50px;
+  z-index: 2;
+  display: none;
 }
 
 #toTop{
@@ -193,10 +219,53 @@ sup {
           filter: grayscale(1);
 }
 
-/* lets too-big element widths be fluid on mobile */
 @media (max-width: 510px) {
+  /* lets too-big element widths be fluid on mobile */
   #container, #main-content, footer, #firstFooter {
     width: inherit;
     max-width: 95%;
+  }
+  /* Make configuration easily accessible */
+  #news-options {
+    width: 0;
+    height: 100%;
+    background-color: #28b;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    margin-top: 50px;
+    -webkit-transition-property: width;
+    -webkit-transition-duration: 0.2s;
+    transition-property: width;
+    transition-duration: 0.2s;
+  }
+  .news-option {
+    display: flex;
+    flex-flow: row-reverse;
+    border-bottom: 1px solid;
+    margin: 0;
+    padding: 10px 15px;
+  }
+  .box {
+    width: calc(100% - 27px);
+  }
+  #options-button {
+    display: block;
+  }
+  #options-close {
+    display: block;
+  }
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+  }
+  #container {
+    top: 203px;
+    position: relative;
   }
 }

@@ -68,8 +68,15 @@ app.controller("AppTest", function($scope, $http, $location, $anchorScroll){
   };
 
   $scope.goToTop = function(){
-    $location.hash('refresh');
-    $anchorScroll();
+    $anchorScroll.yOffset = document.getElementById('container').offsetTop;
+    $anchorScroll('container');
+  };
+
+  $scope.optionsCloseVisible = false;
+  $scope.toggleOptionsMenu = function(){
+    const options = document.getElementById('news-options');
+    options.style.width = options.style.width ? '' : '100%';
+    $scope.optionsCloseVisible = !$scope.optionsCloseVisible;
   };
 
 
