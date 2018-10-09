@@ -26,7 +26,7 @@ html
       <div style="position: center" "cursor: hand">
       <span id="refresh" ng-click="refresh()">Hacker Queue</span>
       </div>
-      <input id="searchterm" type="text" placeholder= "Filter..."  ng-model="searchText.title"/><br>
+      <input id="searchterm" type="text" ng-change="goToTop()" placeholder= "Filter..."  ng-model="searchText.title"/><br>
       <div id="news-options" ng-init="hn = true; lobster = true; rprog = true;">
 
       div(class='news-option')
