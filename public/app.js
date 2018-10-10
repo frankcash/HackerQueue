@@ -75,7 +75,11 @@ app.controller("AppTest", function($scope, $http, $location, $anchorScroll){
   $scope.optionsCloseVisible = false;
   $scope.toggleOptionsMenu = function(){
     const options = document.getElementById('news-options');
-    options.style.width = options.style.width ? '' : '100%';
+    if (options.style.width) {
+      options.style.width = '';
+    } else {
+      options.style.width = '100%';
+    }
     $scope.optionsCloseVisible = !$scope.optionsCloseVisible;
   };
 
