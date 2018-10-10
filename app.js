@@ -44,5 +44,4 @@ app.get('/', function (req, res) {
     );
 });
 
-console.log("now running");
 app.listen(PORT);
