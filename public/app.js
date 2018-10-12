@@ -67,20 +67,9 @@ app.controller("AppTest", function($scope, $http, $location, $anchorScroll){
     });
   };
 
-  $scope.goToTop = () => {
-    $anchorScroll.yOffset = document.getElementById('container').offsetTop;
-    $anchorScroll('container');
-  };
-
-  $scope.optionsCloseVisible = false;
-  $scope.toggleOptionsMenu = () => {
-    const options = document.getElementById('news-options');
-    if (options.style.width) {
-      options.style.width = '';
-    } else {
-      options.style.width = '100%';
-    }
-    $scope.optionsCloseVisible = !$scope.optionsCloseVisible;
+  $scope.goToTop = function(){
+    $location.hash('refresh');
+    $anchorScroll();
   };
 
 

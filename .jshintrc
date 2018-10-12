@@ -8,7 +8,6 @@
   "notypeof": true,
   "freeze": true,
   "maxparams": 5,
-  "browser": true,
   "globals" : {
     "angular" : true
   }
