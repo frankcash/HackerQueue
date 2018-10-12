@@ -21,20 +21,25 @@ html
     script(type='text/javascript' src='app.js')
     script(type='text/javascript' src='loading-bar.js')
     header
+      <button id="options-button" type="button" ng-click="toggleOptionsMenu()">&#9776;</button>
+      <button id="options-close" type="button" ng-show="optionsCloseVisible" ng-click="toggleOptionsMenu()">&times;</button>
       <div style="position: center" "cursor: hand">
       <span id="refresh" ng-click="refresh()">Hacker Queue</span>
       </div>
-      <input id="searchterm" type="text" placeholder= "Filter..."  ng-model="searchText.title"/><br>
-      <div id="boxes" ng-init="hn = true; lobster = true; rprog = true;">
+      <input id="searchterm" type="text" ng-change="goToTop()" placeholder= "Filter..."  ng-model="searchText.title"/><br>
+      <div id="news-options" ng-init="hn = true; lobster = true; rprog = true;">
 
-      <input class="check" type="checkbox" id="hnBox" ng-model="hn" name="check"/>
-      <label class ="box"><strong>Hacker News</strong></label>
+      div(class='news-option')
+        <input class="check" type="checkbox" id="hnBox" ng-model="hn" name="check"/>
+        <label class ="box"><strong>Hacker News</strong></label>
 
-      <input class="check" type="checkbox" id="lobsterBox" ng-model="lobster" name="check"/>
-      <label class="box"><strong>Lobste.rs</strong></label>
+      div(class='news-option')
+        <input class="check" type="checkbox" id="lobsterBox" ng-model="lobster" name="check"/>
+        <label class="box"><strong>Lobste.rs</strong></label>
 
-      <input class="check" type="checkbox" id="rprogBox" ng-model="rprog" name="check"/>
-      <label class = "box"><strong>/r/programming</strong></label>
+      div(class='news-option')
+        <input class="check" type="checkbox" id="rprogBox" ng-model="rprog" name="check"/>
+        <label class = "box"><strong>/r/programming</strong></label>
       </div>
 
 
@@ -51,14 +56,14 @@ html
         p
 
         block content
+      div
+        #firstFooter
+          <p id="toTop" ng-click="goToTop()""> <strong>Back to Top</strong></p>
+      footer
+        #gh-content
+          p Aggregates news from HackerNews, Lobste.rs, and Reddit.com/r/programming
+          p Consider donating BTC 14wcBFByfvf3PAnXD6wW7Ytsif21ftGa5U
+          <iframe src="https://ghbtns.com/github-btn.html?user=frankcash&repo=HackerQueue&type=watch&count=true"allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+
      #sidebar
         block sidebar
-
-    div
-      #firstFooter
-        <p id="toTop" ng-click="goToTop()""> <strong>Back to Top</strong></p>
-    footer
-      #gh-content
-        p Aggregates news from HackerNews, Lobste.rs, and Reddit.com/r/programming
-        p Consider donating BTC 14wcBFByfvf3PAnXD6wW7Ytsif21ftGa5U
-        <iframe src="https://ghbtns.com/github-btn.html?user=frankcash&repo=HackerQueue&type=watch&count=true"allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
