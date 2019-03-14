@@ -1,6 +1,14 @@
 let request = require('request');
 let cheerio = require('cheerio');
 const db = require('../db');
+const helpers = require('../helpers');
+
+function fixSelfPost(url){
+  if(url.match("http") === null){
+    return ("https://www.reddit.com" + url);
+  }
+  return url;
+}
 
 function parse(html, source){
   let metadataArray = [ ];
@@ -19,7 +27,7 @@ function parse(html, source){
     const points = post.find('button[aria-label=upvote]').parent().children('div').text();
 
     const title = title_tag.text();
-    const url   = link_tag.attr('href');
+    const url   = helpers.url_refer(fixSelfPost(link_tag.attr('href')));
 
     const QUERY = 'INSERT INTO "crawls" ("story_url", "source", "title", "comments", "crawled_at") VALUES($1, $2, $3, $4, $5) ON CONFLICT DO NOTHING;';
     db.query(QUERY,[url, source, title, comments_link, new Date() ], (err) => {

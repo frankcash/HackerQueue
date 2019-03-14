@@ -1,6 +1,7 @@
 let request = require('request');
 let cheerio = require('cheerio');
 const db = require('../db');
+const helpers = require('../helpers');
 
 function parse(html){
   let metadataArray = [ ];
@@ -9,7 +10,7 @@ function parse(html){
     let $storylink = $(this).find('.storylink');
     const rank = $(this).find('.rank').text();
     const title = $storylink.text();
-    const url = $storylink.attr('href');
+    const url = helpers.url_refer($storylink.attr('href'));
     let $subtext = $(this).next();
     const points = $subtext.find('.score').text();
     const username = $subtext.find('.hnuser').text();

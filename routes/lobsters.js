@@ -3,6 +3,7 @@
 var request = require('request');
 var cheerio = require('cheerio');
 const db = require('../db');
+const helpers = require('../helpers');
 
 function fixSelfPost(url){
   if(url.match("http") === null){
@@ -27,7 +28,7 @@ var parseLobsterElement = function(a) {
   const source =  "lobste.rs";
 
   // parses href attribute from "a" element
-  var url = fixSelfPost(a.children().attr('href'));
+  var url = helpers.url_refer(fixSelfPost(a.children().attr('href')));
 
   // parses link title
   var title = a.text();
