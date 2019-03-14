@@ -7,5 +7,5 @@ RUN npm install
 # Add your source files
 ADD . .
 EXPOSE 3000
-ENV DATABASE_URL postgres://hacker:hackerx@127.0.0.1:5432/hackerqueue
+
 CMD ["npm","start"]
