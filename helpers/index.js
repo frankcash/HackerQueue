@@ -1,4 +1,4 @@
-exports.url_refer = function(url){
+exports.url_refer = (url)=>{
     if (url.includes("?")) {
         return url
     } else {
