@@ -1,8 +1,9 @@
 "use strict";
 
-var request = require('request');
-var cheerio = require('cheerio');
+const request = require('request');
+const cheerio = require('cheerio');
 const db = require('../db');
+const helpers = require('../helpers');
 
 function fixSelfPost(url){
   if(url.match("http") === null){
@@ -11,31 +12,31 @@ function fixSelfPost(url){
   return url;
 }
 
-var getAlternateLink = function(a) {
-  var detailsEl = a.parent();
-  var storyLinerEl = detailsEl.parent();
-  var listItemEl = storyLinerEl.parent();
-  var storyID = listItemEl.attr("data-shortid");
+const getAlternateLink = function(a) {
+  let detailsEl = a.parent();
+  let storyLinerEl = detailsEl.parent();
+  let listItemEl = storyLinerEl.parent();
+  let storyID = listItemEl.attr("data-shortid");
   if (storyID) {
     return "https://lobste.rs/s/" + storyID;
   }
   return null;
 };
 
-var parseLobsterElement = function(a) {
+const parseLobsterElement = function(a) {
 
   const source =  "lobste.rs";
 
   // parses href attribute from "a" element
-  var url = fixSelfPost(a.children().attr('href'));
+  const url = helpers.url_refer(fixSelfPost(a.children().attr('href')));
 
   // parses link title
-  var title = a.text();
+  const title = a.text();
 
-  var commentsLabel = a.parent().children('.byline').children('span.comments_label');
-  var commentsMatch = commentsLabel.text().match("[0-9]+");
-  var comments = commentsMatch !== null ? commentsMatch[0] : 0;
-  var comments_link = commentsLabel.children('a').attr("href");
+  let commentsLabel = a.parent().children('.byline').children('span.comments_label');
+  let commentsMatch = commentsLabel.text().match("[0-9]+");
+  let comments = commentsMatch !== null ? commentsMatch[0] : 0;
+  let comments_link = commentsLabel.children('a').attr("href");
 
   // transform comments link to absolute url if relative url found
   if (comments_link) { comments_link = "https://lobste.rs" + comments_link; }
@@ -56,7 +57,7 @@ var parseLobsterElement = function(a) {
     }
   });
 
-  var metadata = {
+  const metadata = {
     site: source,
     title:title,
     url:url,
@@ -67,13 +68,13 @@ var parseLobsterElement = function(a) {
   return metadata;
 };
 
-var parseLobsterResponse = function(html) {
-    var metadataArray = [ ];
+const parseLobsterResponse = function(html) {
+    let metadataArray = [ ];
 
-    var $ = cheerio.load(html);
+    let $ = cheerio.load(html);
     $('span.link').each(function(){
-      var a = $(this); //selects previous data
-      var metadata = parseLobsterElement(a);
+      let a = $(this); //selects previous data
+      let metadata = parseLobsterElement(a);
       if (metadata) { metadataArray.push(metadata); }
     });
 
@@ -89,7 +90,7 @@ var parseLobsterResponse = function(html) {
 exports.ltop = function(req, res){
   request('https://lobste.rs', function(error, response, html){
       if(!error && response.statusCode === 200){
-        var metadataArray = parseLobsterResponse(html);
+        let metadataArray = parseLobsterResponse(html);
         res.send(metadataArray);
       }
   });
@@ -98,7 +99,7 @@ exports.ltop = function(req, res){
 exports.lnew = function(req, res){
   request('https://lobste.rs/recent', function(error, response, html){
     if(!error && response.statusCode === 200){
-      var metadataArray = parseLobsterResponse(html);
+      const metadataArray = parseLobsterResponse(html);
       res.send(metadataArray);
     }
   });

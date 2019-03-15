@@ -7,4 +7,5 @@ RUN npm install
 # Add your source files
 ADD . .
 EXPOSE 3000
+
 CMD ["npm","start"]
