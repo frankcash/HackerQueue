@@ -10,7 +10,7 @@ function fixSelfPost(url){
   return url;
 }
 
-function parse(html, source){
+function parse(html){
   let metadataArray = [ ];
   let $ = cheerio.load(html);
 
