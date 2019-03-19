@@ -20,7 +20,7 @@ function parse(html){
     const comments_link = YCOMB_COMMENT_URL + $comments.attr('href');
 
     const QUERY = 'INSERT INTO "crawls" ("story_url", "source", "title", "comments", "crawled_at") VALUES($1, $2, $3, $4, $5) ON CONFLICT DO NOTHING;';
-    db.query(QUERY,[url, "news.ycombinator.com", title, comments_link, new Date() ], (err) => {
+    db.query(QUERY,[url, 1, title, comments_link, new Date() ], (err) => {
       if (err) {
         console.log(err);
         return err;

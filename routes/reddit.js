@@ -30,7 +30,7 @@ function parse(html, source){
     const url   = helpers.url_refer(fixSelfPost(link_tag.attr('href')));
 
     const QUERY = 'INSERT INTO "crawls" ("story_url", "source", "title", "comments", "crawled_at") VALUES($1, $2, $3, $4, $5) ON CONFLICT DO NOTHING;';
-    db.query(QUERY,[url, source, title, comments_link, new Date() ], (err) => {
+    db.query(QUERY,[url, 3, title, comments_link, new Date() ], (err) => {
       if (err) {
         console.log(err);
         return err;
