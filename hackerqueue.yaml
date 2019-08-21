@@ -1,0 +1,48 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: hackerqueue
+
+---
+
+kind: Pod
+apiVersion: v1
+metadata:
+  namespace: hackerqueue
+  name: hackerqueue-webserver
+  labels:
+    app: hackerqueue
+spec:
+  containers:
+    - name: hackerqueue-webserver-app
+      image: frankcashno/hackerqueue:e2fcbd12fbeb390a867ecf60acd70539303fce6a
+      ports:
+      - containerPort: 3000
+      readinessProbe:
+        httpGet:
+          path: /status
+          port: 3000
+        initialDelaySeconds: 5
+        periodSeconds: 10
+      livenessProbe:
+        httpGet:
+          path: /status
+          port: 3000
+        initialDelaySeconds: 3
+        periodSeconds: 3
+      env:
+      - name: DATABASE_URL
+        value: "postgres://user:password@localhost:5432/hackerqueue"
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: hackerqueue-webserver-service
+  namespace: hackerqueue
+spec:
+  selector:
+    app: hackerqueue
+  ports:
+    - port: 3000 # Default port for image
