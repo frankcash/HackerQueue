@@ -16,6 +16,7 @@ services:
     image: ledgehog:latest
     environment:
       DB_HOST: postgres
+      DATABASE_URL: "postgres://hacker:hackerx@postgres:5432/hackerqueue"
     ports:
       - "3000:3000"
     depends_on:
