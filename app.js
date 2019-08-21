@@ -44,4 +44,9 @@ app.get('/', function (req, res) {
     );
 });
 
+
+app.get('/status', function (req, res) {
+  res.status(404).send('ok')
+});
+
 app.listen(PORT);
