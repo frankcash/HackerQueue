@@ -16,6 +16,7 @@ spec:
   containers:
     - name: hackerqueue-webserver-app
       image: frankcashno/hackerqueue:e2fcbd12fbeb390a867ecf60acd70539303fce6a
+      imagePullPolicy: Always
       ports:
       - containerPort: 3000
       readinessProbe:
@@ -41,8 +42,13 @@ apiVersion: v1
 metadata:
   name: hackerqueue-webserver-service
   namespace: hackerqueue
+  labels:
+    app: hackerqueue
 spec:
+  ports:
+    - port: 80 # Default port for image
+      name: hackerqueue-webserver-http-port
+      targetPort: 3000
+      protocol: TCP
   selector:
     app: hackerqueue
-  ports:
-    - port: 3000 # Default port for image
