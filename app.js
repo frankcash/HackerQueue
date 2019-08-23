@@ -28,7 +28,7 @@ app.get('/lnew', lobstersRoute.lnew);
 app.get('/rnew', redditRoute.rnew);
 
 app.get('/status', function (req, res) {
-  return res.status(404).send('ok')
+  return res.status(200).send('ok');
 });
 
 app.set('views', __dirname + '/views'); // sets dir
