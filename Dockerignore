@@ -1,0 +1,7 @@
+.jshintrc
+CODE_OF_CONDUCT.md
+docker-compose.yml
+images
+.data
+.github
+README.md

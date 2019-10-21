@@ -17,8 +17,8 @@ function parse(html){
   $('.Post').each(function(){
 
     let post=$(this);
-    const title_tag   = post.find('h2');
-    const link_tag    = title_tag.parent();
+    const title_tag   = post.find('h3');
+    const link_tag    = title_tag.parent().parent();
 
     const comments_tag  = post.find('a[data-click-id=comments]');
     const comments_link = "https://www.reddit.com" + comments_tag.attr("href");
