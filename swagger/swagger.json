@@ -31,7 +31,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/Crawl"
+              "$ref": "#/definitions/Crawls"
             }
           }
         }
@@ -47,7 +47,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/Crawl"
+              "$ref": "#/definitions/Crawls"
             }
           }
         }
@@ -63,7 +63,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/Crawl"
+              "$ref": "#/definitions/Crawls"
             }
           }
         }
@@ -79,7 +79,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/Crawl"
+              "$ref": "#/definitions/Crawls"
             }
           }
         }
@@ -95,7 +95,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/Crawl"
+              "$ref": "#/definitions/Crawls"
             }
           }
         }
@@ -111,7 +111,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/Crawl"
+              "$ref": "#/definitions/Crawls"
             }
           }
         }
