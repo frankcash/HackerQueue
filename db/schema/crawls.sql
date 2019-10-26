@@ -5,5 +5,4 @@ CREATE TABLE crawls(
     title VARCHAR(255),
     comments VARCHAR(255),
     crawled_at TIMESTAMP
-
 );
