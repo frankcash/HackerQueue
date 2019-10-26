@@ -31,7 +31,7 @@ const parseLobsterElement = function(a) {
   const url = helpers.url_refer(fixSelfPost(a.children().attr('href')));
 
   // parses link title
-  const title = a.text();
+  const title = a.text().replace(/(\r\n|\n|\r)/gm, "");
 
   let commentsLabel = a.parent().children('.byline').children('span.comments_label');
   let commentsMatch = commentsLabel.text().match("[0-9]+");
@@ -59,7 +59,7 @@ const parseLobsterElement = function(a) {
 
   const metadata = {
     site: source,
-    title:title,
+    title: title,
     url:url,
     comments:comments,
     comments_link:comments_link
@@ -90,8 +90,8 @@ const parseLobsterResponse = function(html) {
 exports.ltop = function(req, res){
   request('https://lobste.rs', function(error, response, html){
       if(!error && response.statusCode === 200){
-        let metadataArray = parseLobsterResponse(html);
-        res.send(metadataArray);
+        const metadataArray = parseLobsterResponse(html);
+      	res.send(helpers.wrap(metadataArray));
       }
   });
 };
@@ -100,7 +100,7 @@ exports.lnew = function(req, res){
   request('https://lobste.rs/recent', function(error, response, html){
     if(!error && response.statusCode === 200){
       const metadataArray = parseLobsterResponse(html);
-      res.send(metadataArray);
+      res.send(helpers.wrap(metadataArray));
     }
   });
 };

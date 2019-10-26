@@ -2,7 +2,7 @@ version: '3'
 services:
   postgres:
     container_name: hackerqueue-pg
-    image: postgres:9.6.3
+    image: postgres:12-alpine
     environment:
       POSTGRES_PASSWORD: hackerx
       POSTGRES_USER: hacker
@@ -13,7 +13,8 @@ services:
       - ./.data/pg:/var/lib/postgresql/data
   web:
     build: .
-    image: ledgehog:latest
+    image: hackerqueue:latest
+    container_name: hackerqueue-web
     environment:
       DB_HOST: postgres
       DATABASE_URL: "postgres://hacker:hackerx@postgres:5432/hackerqueue"

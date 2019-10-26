@@ -8,12 +8,9 @@ function parse(html){
   let $ = cheerio.load(html);
   $('.athing').each(function(){
     let $storylink = $(this).find('.storylink');
-    const rank = $(this).find('.rank').text();
     const title = $storylink.text();
     const url = helpers.url_refer($storylink.attr('href'));
     let $subtext = $(this).next();
-    const points = $subtext.find('.score').text();
-    const username = $subtext.find('.hnuser').text();
     let $comments = $subtext.find('a').last();
     const comments = $comments.text();
     const YCOMB_COMMENT_URL = "https://news.ycombinator.com/";
@@ -28,12 +25,9 @@ function parse(html){
     });
 
     let metadata = { // creates a new object
-      rank: parseInt(rank),
       site: "HN",
       title: title,
       url: url,
-      points: parseInt(points),
-      username: username,
       comments: parseInt(comments),
       comments_link: comments_link
     };
@@ -45,7 +39,7 @@ function parse(html){
 exports.htop = function(req,res){
   request('https://news.ycombinator.com', function(error, response, html){
       if(!error && response.statusCode === 200){
-        res.send(parse(html, "news.ycombinator.com"));
+        res.send(helpers.wrap(parse(html, "news.ycombinator.com")));
       }
   });
 
@@ -54,7 +48,7 @@ exports.htop = function(req,res){
 exports.hnew = function(req,res){
   request('https://news.ycombinator.com/newest', function(error, response, html){
       if(!error && response.statusCode === 200){
-        res.send(parse(html, "news.ycombinator.com/newest"));
+        res.send(helpers.wrap(parse(html, "news.ycombinator.com/newest")));
       }
   });
 

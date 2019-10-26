@@ -24,7 +24,6 @@ function parse(html, source){
     const comments_link = "https://www.reddit.com" + comments_tag.attr("href");
     const comments      = parseInt(comments_tag.text());
 
-    const points = post.find('button[aria-label=upvote]').parent().children('div').text();
 
     const title = title_tag.text();
     const url   = helpers.url_refer(fixSelfPost(link_tag.attr('href')));
@@ -44,7 +43,6 @@ function parse(html, source){
       url: url,
       comments: comments,
       comments_link: comments_link,
-      points: points
     };
 
     metadataArray.push(metadata);
@@ -56,7 +54,7 @@ function parse(html, source){
 exports.rtop = function(req,res){
   request('http://www.reddit.com/r/programming', function(error, response, html){
     if(!error && response.statusCode === 200){
-      res.send(parse(html, "reddit.com/r/programming"));
+      res.send(helpers.wrap(parse(html, "reddit.com/r/programming")));
     }
   });
 };
@@ -65,7 +63,7 @@ exports.rtop = function(req,res){
 exports.rnew = function(req,res){
   request('http://www.reddit.com/r/programming/new/', function(error, response, html){
     if(!error && response.statusCode === 200){
-      res.send(parse(html, "reddit.com/r/programming/new"));
+      res.send(helpers.wrap(parse(html, "reddit.com/r/programming/new")));
     }
   });
 };

@@ -1,15 +1,19 @@
 /*
  * * Module dependencies
  * */
-var express = require('express');
+let express = require('express');
 require('dotenv').config();
-var lobstersRoute = require('./routes/lobsters.js');
-var redditRoute = require('./routes/reddit.js');
-var hackerRoute = require('./routes/hackernews.js');
+let lobstersRoute = require('./routes/lobsters.js');
+let redditRoute = require('./routes/reddit.js');
+let hackerRoute = require('./routes/hackernews.js');
+let swaggerUi = require('swagger-ui-express'),
+    swaggerDocument = require('./swagger/swagger.json');
 
 var app = express(); // sets up the server
 
 var PORT = process.env.PORT || 3000;
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.get('/ycomb', hackerRoute.htop);
 
