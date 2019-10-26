@@ -1,0 +1,155 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.3.4",
+    "title": "Hackerqueue",
+    "description": "Programming news round-up",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/ynew": {
+      "get": {
+        "tags": [
+          "Crawls"
+        ],
+        "summary": "Get all new crawls for HackerNews",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Crawl"
+            }
+          }
+        }
+      }
+    },
+    "/rnew": {
+      "get": {
+        "tags": [
+          "Crawls"
+        ],
+        "summary": "Get all new crawls for Reddit.com/r/programming",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Crawl"
+            }
+          }
+        }
+      }
+    },
+    "/lnew": {
+      "get": {
+        "tags": [
+          "Crawls"
+        ],
+        "summary": "Get all new crawls for Lobste.rs",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Crawl"
+            }
+          }
+        }
+      }
+    },
+    "/ycomb": {
+      "get": {
+        "tags": [
+          "Crawls"
+        ],
+        "summary": "Get all top crawls for HackerNews",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Crawl"
+            }
+          }
+        }
+      }
+    },
+    "/lobstr": {
+      "get": {
+        "tags": [
+          "Crawls"
+        ],
+        "summary": "Get all top crawls for Lobste.rs",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Crawl"
+            }
+          }
+        }
+      }
+    },
+    "/rp": {
+      "get": {
+        "tags": [
+          "Crawls"
+        ],
+        "summary": "Get all top crawls for Reddit.com/r/programming",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Crawl"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Crawl": {
+      "required": [
+        "site",
+        "title"
+      ],
+      "properties": {
+        "site": {
+          "type": "string",
+          "enum": [
+            "r/programming",
+            "HN",
+            "lobste.rs"
+          ]
+        },
+        "title": {
+          "type": "string"
+        },
+        "story_url": {
+          "type": "string"
+        },
+        "comments": {
+          "type": "string"
+        },
+        "comments_link": {
+          "type": "string"
+        }
+      }
+    },
+    "Crawls": {
+      "type": "array",
+      "$ref": "#/definitions/Crawl"
+    }
+  }
+}
