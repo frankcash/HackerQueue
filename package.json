@@ -33,7 +33,8 @@
 		"jade": "*",
 		"nib": "*",
 		"pg": "^7.4.1",
-		"request": "^2.88.0"
+		"request": "^2.88.0",
+		"swagger-node-express": "^2.1.3"
 	},
 	"devDependencies": {
 		"chai": "*",
