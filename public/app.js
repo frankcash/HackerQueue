@@ -20,50 +20,50 @@ app.controller("AppTest", function($scope, $http, $location, $anchorScroll){
   For top posts
   **/
   $http.get('/ycomb').success(function(data) {
-      $scope.hackerTop = data;
+      $scope.hackerTop = data.Crawls;
   });
   $http.get('/lobster').success(function(data) {
-      $scope.lobTop = data;
+      $scope.lobTop = data.Crawls;
   });
   $http.get('/rp').success(function(data) {
-      $scope.rTop = data;
+      $scope.rTop = data.Crawls;
   });
 
   /**
   For new posts
   **/
   $http.get('/ynew').success(function(data) {
-      $scope.hackerNew = data;
+      $scope.hackerNew = data.Crawls;
   });
   $http.get('/lnew').success(function(data) {
-      $scope.lNew = data;
+      $scope.lNew = data.Crawls;
   });
   $http.get('/rnew').success(function(data) {
-      $scope.rNew = data;
+      $scope.rNew = data.Crawls;
   });
 
   $scope.refresh = function(){
     $http.get('/ycomb').success(function(data) {
-        $scope.hackerTop = data;
+        $scope.hackerTop = data.Crawls;
     });
     $http.get('/lobster').success(function(data) {
-        $scope.lobTop = data;
+        $scope.lobTop = data.Crawls;
     });
     $http.get('/rp').success(function(data) {
-        $scope.rTop = data;
+        $scope.rTop = data.Crawls;
     });
 
     /**
     For new posts
     **/
     $http.get('/ynew').success(function(data) {
-        $scope.hackerNew = data;
+        $scope.hackerNew = data.Crawls;
     });
     $http.get('/lnew').success(function(data) {
-        $scope.lNew = data;
+        $scope.lNew = data.Crawls;
     });
     $http.get('/rnew').success(function(data) {
-        $scope.rNew = data;
+        $scope.rNew = data.Crawls;
     });
   };
 
