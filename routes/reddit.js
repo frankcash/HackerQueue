@@ -54,7 +54,7 @@ function parse(html, source){
 exports.rtop = function(req,res){
   request('http://www.reddit.com/r/programming', function(error, response, html){
     if(!error && response.statusCode === 200){
-      res.send({Crawls: parse(html, "reddit.com/r/programming")});
+      res.send(helpers.wrap(parse(html, "reddit.com/r/programming")));
     }
   });
 };
@@ -63,7 +63,7 @@ exports.rtop = function(req,res){
 exports.rnew = function(req,res){
   request('http://www.reddit.com/r/programming/new/', function(error, response, html){
     if(!error && response.statusCode === 200){
-      res.send({Crawls: parse(html, "reddit.com/r/programming/new")});
+      res.send(helpers.wrap(parse(html, "reddit.com/r/programming/new")));
     }
   });
 };

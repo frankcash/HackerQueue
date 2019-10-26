@@ -39,7 +39,7 @@ function parse(html){
 exports.htop = function(req,res){
   request('https://news.ycombinator.com', function(error, response, html){
       if(!error && response.statusCode === 200){
-        res.send({Crawls: parse(html, "news.ycombinator.com")});
+        res.send(helpers.wrap(parse(html, "news.ycombinator.com")));
       }
   });
 
@@ -48,7 +48,7 @@ exports.htop = function(req,res){
 exports.hnew = function(req,res){
   request('https://news.ycombinator.com/newest', function(error, response, html){
       if(!error && response.statusCode === 200){
-        res.send({Crawls: parse(html, "news.ycombinator.com/newest")});
+        res.send(helpers.wrap(parse(html, "news.ycombinator.com/newest")));
       }
   });
 

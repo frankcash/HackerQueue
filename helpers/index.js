@@ -4,3 +4,7 @@ exports.url_refer = (url)=>{
     }
     return url
 };
+
+exports.wrap = (arr)=>{
+	return {Crawls: arr}
+}

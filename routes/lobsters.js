@@ -90,8 +90,8 @@ const parseLobsterResponse = function(html) {
 exports.ltop = function(req, res){
   request('https://lobste.rs', function(error, response, html){
       if(!error && response.statusCode === 200){
-        let metadataArray = parseLobsterResponse(html);
-        res.send({Crawls: metadataArray});
+        const metadataArray = parseLobsterResponse(html);
+      	res.send(helpers.wrap(metadataArray));
       }
   });
 };
@@ -100,7 +100,7 @@ exports.lnew = function(req, res){
   request('https://lobste.rs/recent', function(error, response, html){
     if(!error && response.statusCode === 200){
       const metadataArray = parseLobsterResponse(html);
-      res.send({Crawls: metadataArray});
+      res.send(helpers.wrap(metadataArray));
     }
   });
 };
