@@ -9,4 +9,20 @@ describe('Self Post URL Modification', ()=>{
 				assert.equal(res, expected)
       });
     });
+
+    describe("helpers.fixSelfPost(base_url, url) with insufficient input for modification", ()=>{
+      it("Should return base url", function(){
+				const expected = "http://lobste.rs/s/"
+        const res = helpers.fixSelfPost("http://lobste.rs/s/", null)
+				assert.equal(res, expected)
+      });
+    });
+
+    describe("helpers.fixSelfPost(base_url, url) with sufficient input for modification, but it isn't needed", ()=>{
+      it("Should return a the url without modification", function(){
+				const expected = "https://www.reddit.com/r/programming/comments/doy3uu/my_most_embarrassing_mistakes_as_a_programmer_so"
+        const res = helpers.fixSelfPost("http://reddit.com/r/programming/", "https://www.reddit.com/r/programming/comments/doy3uu/my_most_embarrassing_mistakes_as_a_programmer_so")
+				assert.equal(res, expected)
+      });
+    });
 })

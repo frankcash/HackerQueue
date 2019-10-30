@@ -17,6 +17,7 @@ exports.fixSelfPost = (base_url, url)=>{
   	}
   	return url;
 	}
+	return base_url;
 }
 
 
