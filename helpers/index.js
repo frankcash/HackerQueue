@@ -8,3 +8,17 @@ exports.url_refer = (url)=>{
 exports.wrap = (arr)=>{
 	return {Crawls: arr}
 }
+
+exports.fixSelfPost = (base_url, url)=>{
+	console.log(base_url, url)
+	if(url !== null){
+	  if(url.match("http") === null){
+  	  return (base_url + url);
+  	}
+  	return url;
+	}
+}
+
+
+
+

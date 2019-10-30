@@ -5,18 +5,11 @@ const cheerio = require('cheerio');
 const db = require('../db');
 const helpers = require('../helpers');
 
-function fixSelfPost(url){
-  if(url.match("http") === null){
-    return ("https://lobste.rs" + url);
-  }
-  return url;
-}
-
 const getAlternateLink = function(a) {
   let detailsEl = a.parent();
   let storyLinerEl = detailsEl.parent();
   let listItemEl = storyLinerEl.parent();
-  let storyID = listItemEl.attr("data-shortid");
+  const storyID = listItemEl.attr("data-shortid");
   if (storyID) {
     return "https://lobste.rs/s/" + storyID;
   }
@@ -28,7 +21,7 @@ const parseLobsterElement = function(a) {
   const source =  "lobste.rs";
 
   // parses href attribute from "a" element
-  const url = helpers.url_refer(fixSelfPost(a.children().attr('href')));
+  const url = helpers.url_refer(helpers.fixSelfPost("https://lobste.rs", a.children().attr('href')));
 
   // parses link title
   const title = a.text().replace(/(\r\n|\n|\r)/gm, "");
